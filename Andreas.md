@@ -117,3 +117,6 @@ To address this assumption, we need to gather evidence and understand how the pr
   Source: https://www.health.nsw.gov.au/single-digital-patient-record/Pages/default.aspx
 
 These findings suggest that partial or fully integrated solutions already exist across Australia. However, people still experience uncertainty or discomfort due to the **fragmented and scattered nature of their health data**, which affects their sense of control.
+
+This is a walk through for how we can visualize Diagnostic Imaging Reports:  
+https://training.digitalhealth.gov.au/pluginfile.php/44128/mod_resource/content/7/content/index.html#/lessons/W_s35xx2tXjDe5TMXJggGGDlM5DW6Nxd
