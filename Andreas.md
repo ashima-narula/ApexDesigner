@@ -100,3 +100,20 @@ This complexity directly reinforces the **data fragmentation problem** you ident
 
 
 Debate rages on whether to opt out of Australia's online health record: https://www.youtube.com/watch?v=Yk7surbHMqs
+
+## 2nd Research: National vs State Policies
+
+People may have access to health‑record tools, but we still don’t know whether requesting their records from the public sector is easy or accessible. Why do we assume it is difficult?
+
+To address this assumption, we need to gather evidence and understand how the process actually works:
+
+- The Australian Government Department of Health provides **FOI/ROI (Freedom of Information / Right of Information)** processes for requesting health information from public entities. These requests are managed individually by each State Health Department.  
+  Source: https://www.health.gov.au/topics/about-the-department/corporate-reporting/foi?language=en
+
+- In **Queensland**, the government states that it partners with **My Health Record** (the national data‑sharing initiative) and outlines what information is shared and how long requests take.  
+  Source: https://www.health.qld.gov.au/system-governance/records-privacy
+
+- In **New South Wales**, the government uses the **Single Digital Patient Record (SDPR)**, which is different from My Health Record and appears to centralise both public and some private records.  
+  Source: https://www.health.nsw.gov.au/single-digital-patient-record/Pages/default.aspx
+
+These findings suggest that partial or fully integrated solutions already exist across Australia. However, people still experience uncertainty or discomfort due to the **fragmented and scattered nature of their health data**, which affects their sense of control.
