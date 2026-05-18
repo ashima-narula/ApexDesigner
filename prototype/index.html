@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <title>MedFile — Choose Role</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span>MedFile</span>
+      </div>
+      <span class="role-badge">Demo</span>
+    </header>
+
+    <main>
+      <h1>Whose phone is this?</h1>
+      <p class="muted">Open this app on three phones, choose a different role on each, then run the GP &rarr; Patient &rarr; Pharmacist demo.</p>
+
+      <a class="tile gp" href="gp.html">
+        <div class="tile-title">I am the GP</div>
+        <div class="tile-sub">Issue a prescription to a patient.</div>
+      </a>
+
+      <a class="tile patient" href="patient.html">
+        <div class="tile-title">I am the Patient</div>
+        <div class="tile-sub">Receive scripts, take doses, share with pharmacy.</div>
+      </a>
+
+      <a class="tile pharmacist" href="pharmacist.html">
+        <div class="tile-title">I am the Pharmacist</div>
+        <div class="tile-sub">Scan a patient&rsquo;s script, dispense.</div>
+      </a>
+
+      <div class="spacer"></div>
+
+      <p class="muted" style="font-size:12px">
+        Prototype for UQ DECO3800/7380 &mdash; MedFile (Semester&nbsp;1&nbsp;2026). No data leaves the phone; all state in localStorage.
+      </p>
+    </main>
+  </div>
+</body>
+</html>

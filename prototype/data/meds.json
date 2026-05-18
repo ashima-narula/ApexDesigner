@@ -1,0 +1,57 @@
+[
+  {
+    "id": "med-amox-500",
+    "name": "Amoxicillin",
+    "strength": "500mg",
+    "form": "capsule",
+    "image": "img/amox.svg",
+    "defaultSchedule": "1 capsule, 3 times daily for 7 days",
+    "quantity": { "value": 21, "unit": "capsule" },
+    "class": ["penicillin"],
+    "interactsWith": []
+  },
+  {
+    "id": "med-paracetamol-500",
+    "name": "Paracetamol",
+    "strength": "500mg",
+    "form": "tablet",
+    "image": "img/paracetamol.svg",
+    "defaultSchedule": "1-2 tablets every 4-6 hours, max 8 in 24 hours",
+    "quantity": { "value": 24, "unit": "tablet" },
+    "class": ["analgesic"],
+    "interactsWith": []
+  },
+  {
+    "id": "med-warfarin-5",
+    "name": "Warfarin",
+    "strength": "5mg",
+    "form": "tablet",
+    "image": "img/warfarin.svg",
+    "defaultSchedule": "1 tablet once daily, evening",
+    "quantity": { "value": 28, "unit": "tablet" },
+    "class": ["anticoagulant"],
+    "interactsWith": ["med-aspirin-100"]
+  },
+  {
+    "id": "med-aspirin-100",
+    "name": "Aspirin",
+    "strength": "100mg",
+    "form": "tablet",
+    "image": "img/aspirin.svg",
+    "defaultSchedule": "1 tablet once daily with food",
+    "quantity": { "value": 30, "unit": "tablet" },
+    "class": ["nsaid", "antiplatelet"],
+    "interactsWith": ["med-warfarin-5"]
+  },
+  {
+    "id": "med-ventolin-100",
+    "name": "Salbutamol (Ventolin)",
+    "strength": "100mcg/dose",
+    "form": "inhaler",
+    "image": "img/ventolin.svg",
+    "defaultSchedule": "1-2 puffs as needed for shortness of breath",
+    "quantity": { "value": 1, "unit": "inhaler" },
+    "class": ["bronchodilator"],
+    "interactsWith": []
+  }
+]

@@ -1,0 +1,383 @@
+/* MedFile prototype - role-themed shell + screens */
+
+:root {
+  --gp: #2563eb;
+  --gp-tint: #dbeafe;
+  --patient: #16a34a;
+  --patient-tint: #dcfce7;
+  --pharmacist: #ea580c;
+  --pharmacist-tint: #ffedd5;
+  --danger: #dc2626;
+  --danger-tint: #fee2e2;
+  --warn: #d97706;
+  --warn-tint: #fef3c7;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Role borders - the visible "which phone am I" cue */
+body.role-gp         { border-top: 8px solid var(--gp); }
+body.role-patient    { border-top: 8px solid var(--patient); }
+body.role-pharmacist { border-top: 8px solid var(--pharmacist); }
+
+/* App shell */
+.app-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--surface);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Top bar */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topbar .brand {
+  font-weight: 700;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.role-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+}
+
+body.role-gp         .role-badge { background: var(--gp-tint);         color: var(--gp); }
+body.role-patient    .role-badge { background: var(--patient-tint);    color: var(--patient); }
+body.role-pharmacist .role-badge { background: var(--pharmacist-tint); color: var(--pharmacist); }
+
+.reset-btn {
+  font-size: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.reset-btn:active { background: var(--bg); }
+
+/* Main content */
+main {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* Headings */
+h1 { font-size: 24px; margin: 8px 0 12px; }
+h2 { font-size: 18px; margin: 16px 0 8px; }
+h3 { font-size: 15px; margin: 12px 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700; }
+p  { margin: 8px 0; line-height: 1.5; }
+.muted { color: var(--muted); font-size: 14px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--ink);
+  color: white;
+  transition: opacity 0.15s, transform 0.05s;
+}
+.btn:active { transform: scale(0.985); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn.secondary { background: var(--bg); color: var(--ink); border: 1px solid var(--border); }
+.btn.gp         { background: var(--gp); }
+.btn.patient    { background: var(--patient); }
+.btn.pharmacist { background: var(--pharmacist); }
+.btn.danger     { background: var(--danger); }
+
+.btn + .btn { margin-top: 10px; }
+
+/* Cards / list rows */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 10px 0;
+}
+.card.tappable { cursor: pointer; }
+.card.tappable:active { background: var(--bg); }
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.row > .grow { flex: 1; min-width: 0; }
+
+.title { font-weight: 600; font-size: 16px; }
+.subtitle { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+/* Badges */
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+}
+.badge.issued     { background: var(--warn-tint);     color: var(--warn); }
+.badge.dispensed  { background: var(--patient-tint);  color: var(--patient); }
+.badge.danger     { background: var(--danger-tint);   color: var(--danger); }
+
+/* Choice tiles (role chooser) */
+.tile {
+  display: block;
+  padding: 24px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--ink);
+  border: 2px solid var(--border);
+  margin: 12px 0;
+  transition: transform 0.08s, border-color 0.15s;
+}
+.tile:active { transform: scale(0.98); }
+.tile .tile-title { font-size: 20px; font-weight: 700; }
+.tile .tile-sub { font-size: 14px; color: var(--muted); margin-top: 4px; }
+.tile.gp         { border-color: var(--gp); background: var(--gp-tint); }
+.tile.patient    { border-color: var(--patient); background: var(--patient-tint); }
+.tile.pharmacist { border-color: var(--pharmacist); background: var(--pharmacist-tint); }
+
+/* QR display */
+.qr-frame {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 14px auto;
+}
+.qr-frame canvas, .qr-frame img { display: block; max-width: 100%; height: auto; }
+
+/* Camera viewfinder */
+.viewfinder {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+.viewfinder video,
+.viewfinder #qr-reader {
+  flex: 1;
+  width: 100%;
+  object-fit: cover;
+  background: black;
+}
+.viewfinder #qr-reader { display: flex; align-items: center; justify-content: center; }
+.viewfinder #qr-reader video { width: 100%; height: 100%; object-fit: cover; }
+
+.vf-hud {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 16px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0));
+  z-index: 2;
+}
+.vf-hud .vf-title { font-weight: 600; }
+.vf-hud .vf-close {
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.vf-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  border: 3px dashed rgba(255,255,255,0.6);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.vf-hint {
+  position: absolute;
+  top: calc(50% + 130px);
+  left: 0; right: 0;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+/* Pill thumbnail sheet (camera "recognition") */
+.thumb-sheet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 -6px 24px rgba(0,0,0,0.25);
+  z-index: 3;
+}
+.thumb-sheet .sheet-title { font-weight: 600; margin-bottom: 12px; }
+.thumb-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 12px;
+}
+.thumb {
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 8px;
+  background: white;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.08s;
+}
+.thumb:active { transform: scale(0.96); }
+.thumb img { width: 56px; height: 56px; object-fit: contain; }
+.thumb .thumb-name { font-size: 12px; font-weight: 600; margin-top: 6px; }
+.thumb .thumb-strength { font-size: 11px; color: var(--muted); }
+
+/* Confidence bar */
+.confidence {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  padding: 24px 18px;
+  z-index: 4;
+}
+.confidence .label { font-weight: 600; margin-bottom: 10px; }
+.confidence .bar {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--bg);
+  overflow: hidden;
+}
+.confidence .bar-fill {
+  height: 100%;
+  width: 0;
+  background: var(--patient);
+  transition: width 0.5s ease-out;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  z-index: 200;
+  max-width: 90vw;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; }
+
+/* Warning banner */
+.warning {
+  background: var(--danger-tint);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin: 12px 0;
+  font-size: 14px;
+}
+.warning .w-title { font-weight: 700; margin-bottom: 4px; }
+
+/* Forms */
+label { display: block; font-size: 13px; font-weight: 600; color: var(--muted); margin: 12px 0 4px; }
+input[type="text"], textarea, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  background: white;
+}
+textarea { min-height: 70px; resize: vertical; }
+
+/* Hidden helper */
+.hidden { display: none !important; }
+
+/* Footer / spacer */
+.spacer { height: 24px; }

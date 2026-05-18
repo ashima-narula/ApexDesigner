@@ -1,0 +1,8 @@
+{
+  "id": "patient-sarah-chen",
+  "name": "Sarah Chen",
+  "dob": "1989-03-14",
+  "sex": "F",
+  "allergies": ["penicillin"],
+  "activeMedications": []
+}

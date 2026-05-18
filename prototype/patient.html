@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#16a34a">
+  <title>MedFile — Patient</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="role-patient">
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><a href="index.html" style="color:inherit;text-decoration:none">MedFile</a></div>
+      <span class="role-badge" id="patient-name-badge">Patient</span>
+      <button class="reset-btn" data-action="reset">Reset</button>
+    </header>
+
+    <main id="screen"></main>
+
+    <!-- Viewfinder overlay (created on demand by scenes-patient.js) -->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.10/html5-qrcode.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/qr.js"></script>
+  <script src="js/scenes-patient.js"></script>
+</body>
+</html>
