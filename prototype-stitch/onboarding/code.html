@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Welcome to My Health Record</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Hanken Grotesk -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f9f9f9",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-tint": "#005bc1",
+                        "primary-container": "#0070eb",
+                        "on-primary-fixed": "#001a41",
+                        "on-surface-variant": "#414755",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#b6eaff",
+                        "secondary-container": "#dc3135",
+                        "secondary-fixed": "#ffdad7",
+                        "on-secondary-container": "#fffbff",
+                        "outline-variant": "#c1c6d7",
+                        "on-tertiary-container": "#fafdff",
+                        "on-secondary-fixed": "#410004",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#007f9c",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "on-primary-container": "#fefcff",
+                        "primary": "#0058bc",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f3f3f3",
+                        "surface": "#f9f9f9",
+                        "secondary": "#b81120",
+                        "inverse-primary": "#adc6ff",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed-variant": "#930014",
+                        "outline": "#717786",
+                        "on-surface": "#1b1b1b",
+                        "tertiary": "#00647c",
+                        "inverse-surface": "#303030",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed": "#001f28",
+                        "surface-variant": "#e2e2e2",
+                        "surface-dim": "#dadada",
+                        "on-background": "#1b1b1b",
+                        "background": "#f9f9f9",
+                        "tertiary-fixed-dim": "#49d6ff",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#adc6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-gutter": "16px",
+                        "stack-gap-lg": "32px",
+                        "stack-gap-sm": "8px",
+                        "grid-margin": "20px",
+                        "stack-gap-md": "16px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .onboarding-gradient {
+            background: radial-gradient(circle at top left, #ffffff 0%, #f3f3f3 100%);
+        }
+        .active-dot {
+            width: 24px;
+            transition: width 0.3s ease;
+        }
+        /* Custom scroll-snap for mobile-like carousel */
+        .carousel-container {
+            scroll-snap-type: x mandatory;
+            overflow-x: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel-slide {
+            scroll-snap-align: center;
+            flex: 0 0 100%;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col items-center">
+<!-- Top AppBar (Simplified for Onboarding) -->
+<header class="w-full max-w-7xl mx-auto flex justify-between items-center px-grid-margin py-stack-gap-md sticky top-0 bg-surface z-50">
+<div class="flex items-center gap-2">
+<!-- Institutional Branding Placeholder -->
+<div class="flex items-center gap-4">
+<div class="h-8 w-px bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-headline-md text-[14px] leading-tight font-black text-primary">Australian Government</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">Digital Health Agency</span>
+</div>
+</div>
+</div>
+<div class="font-headline-md text-[16px] font-bold text-primary">My Health Record</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-md mx-auto flex flex-col justify-between overflow-hidden">
+<!-- Onboarding Carousel -->
+<div class="carousel-container flex h-full items-center" id="carousel">
+<!-- Slide 1 -->
+<div class="carousel-slide flex flex-col items-center px-grid-margin text-center pt-stack-gap-lg">
+<div class="relative w-full aspect-square max-w-[280px] mb-stack-gap-lg">
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl"></div>
+<img alt="Health Data Icon" class="relative z-10 w-full h-full object-contain p-8" data-alt="A clean, minimalist 3D rendering of a bright blue medical folder floating against a soft white background. The folder is overflowing with organized digital health charts and data points, represented by glowing cyan pulses. The lighting is bright and clinical yet inviting, maintaining a professional healthcare aesthetic consistent with high-end corporate design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW4Qa7LV0ssy0zuMYlQaqCW0uOawa2_BkjqjERcluJ_RcSaCUPij-gorJeReWE5fsJ86XyKIiSuB_eZJeggFsunAQejhQ3btRXHYd6ymz1sKlctI6K5ca_K0HSW5bjMm27PpFEBYTodMafvh_LWr5rSZlxieP6ZO5ehuH6p7HanyZNX4LuMM0sfyAVwmd0xCjSB9NtCYy1APIdqRtXBXfEGB7kEdrNdXoov7UsdNPSfw8MBfbViTgrRrAMUvLOBiUrTp9BZwO3ndVi"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-stack-gap-sm">
+                    Welcome to<br/>My Health Record
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    All your medical data, securely stored and easily accessible in one single app.
+                </p>
+</div>
+<!-- Slide 2 (Active/Target state) -->
+<div class="carousel-slide flex flex-col items-center px-grid-margin text-center pt-stack-gap-lg">
+<div class="relative w-full aspect-square max-w-[280px] mb-stack-gap-lg">
+<div class="absolute inset-0 bg-secondary/5 rounded-full blur-3xl"></div>
+<img alt="Medical Register Icon" class="relative z-10 w-full h-full object-contain p-8" data-alt="A sophisticated 3D illustration of a medical register with a fingerprint scanner icon, symbolizing secure data access. The book has clean white pages and a deep blue cover, reflecting professional institutional trust. It is set against a pure white environment with soft, diffused lighting that creates subtle shadows and a sense of depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6liTY6oadUt1tY6ZitPoJxI2KQ4MyAZgY5R6sDw3odqi5BMu-yW9Qog1uGI1tLjh86fmGbfUOCleo0Dem_lL6jB6uTNA-MatY04LhtzXt6uccV7q_ZC6HuhL3EElfqw6vyreAvlTP5JUjdBDT2izs6KXLqITKG20yc2AdcrXozV4lsImPHGPG7Ccsepafop6VHThJveYbNDXAqkJaqB-GJ4hGmV8Yc5TeiFgo6vp1TOGLoxfADbw56ocSPq2WfPwvTl4PkoTEZE3g"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-stack-gap-sm">
+                    Your medical register<br/>in your hand
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Take control of your health journey with instant access to prescriptions, reports, and history.
+                </p>
+</div>
+<!-- Slide 3 -->
+<div class="carousel-slide flex flex-col items-center px-grid-margin text-center pt-stack-gap-lg">
+<div class="relative w-full aspect-square max-w-[280px] mb-stack-gap-lg">
+<div class="absolute inset-0 bg-tertiary/5 rounded-full blur-3xl"></div>
+<img alt="Profile Icon" class="relative z-10 w-full h-full object-contain p-8" data-alt="A professional 3D stylized character profile placeholder inside a protective glowing orb. The aesthetic is modern and corporate, featuring a palette of medical blues and clean whites. The background is a crisp, bright light-mode setting with sharp focus on the central figure, evoking a feeling of personalized care and privacy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgXLVKj5g4VYlm-ZSg5LlCSeRO3_mKK8gfQu43dlTpFpODP_H3997KTV7qgNUkJCQEuW46qT9aLpLyqHkYU5DmEQ99dpwOhjsohdEFv17A9upT2OPtGaAplci4yKFzEsoXmLBjuuUJXjH_t7jWwe8yGZFHIgktgK6DCdu3u1VbeVGgwJnmY2zB89O0rhZf2-wQLAQGNzmux8UXwImcf4myy9rHGsCBxn_pecqvhJWCgiL_FOQ9ZizvQ-9IPtKXE8skgCWZTs0TF4zv"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-stack-gap-sm">
+                    Personalized for<br/>your wellbeing
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Manage your profile, emergency contacts, and notifications to stay informed always.
+                </p>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="w-full px-grid-margin pb-stack-gap-lg flex flex-col items-center gap-stack-gap-md">
+<!-- Pagination Indicator -->
+<div class="flex items-center gap-2 py-4">
+<div class="h-2 w-2 rounded-full bg-outline-variant"></div>
+<div class="h-2 active-dot rounded-full bg-primary"></div>
+<div class="h-2 w-2 rounded-full bg-outline-variant"></div>
+<div class="h-2 w-2 rounded-full bg-outline-variant"></div>
+<div class="h-2 w-2 rounded-full bg-outline-variant"></div>
+<div class="h-2 w-2 rounded-full bg-outline-variant"></div>
+<div class="h-2 w-2 rounded-full bg-outline-variant"></div>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary-container text-on-primary-container py-4 rounded-xl font-label-md text-label-md flex justify-center items-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all shadow-sm" onclick="handleNext()">
+                Next Step
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<!-- Secondary Action -->
+<button class="w-full py-4 font-label-md text-label-md text-primary font-bold hover:bg-surface-container-low rounded-xl transition-colors">
+                Skip for now
+            </button>
+</div>
+</main>
+<!-- Bottom Separation (As requested for no navigation shells in transactional/onboarding flows) -->
+<div class="h-4 w-full bg-transparent"></div>
+<script>
+        // Simple carousel interaction simulation
+        const carousel = document.getElementById('carousel');
+        const dots = document.querySelectorAll('.h-2');
+        
+        carousel.addEventListener('scroll', () => {
+            const index = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+            updateDots(index);
+        });
+
+        function updateDots(activeIndex) {
+            dots.forEach((dot, i) => {
+                if (i === activeIndex) {
+                    dot.classList.remove('w-2', 'bg-outline-variant');
+                    dot.classList.add('active-dot', 'bg-primary');
+                } else {
+                    dot.classList.remove('active-dot', 'bg-primary');
+                    dot.classList.add('w-2', 'bg-outline-variant');
+                }
+            });
+        }
+
+        function handleNext() {
+            const nextScroll = carousel.scrollLeft + carousel.offsetWidth;
+            if (nextScroll < carousel.scrollWidth) {
+                carousel.scrollTo({
+                    left: nextScroll,
+                    behavior: 'smooth'
+                });
+            } else {
+                // Final step → sign in
+                window.location.href = '../sign_in_sign_up/code.html';
+            }
+        }
+    </script>
+<script src="../wire.js"></script>
+</body></html>

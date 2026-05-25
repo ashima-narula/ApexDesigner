@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Health ID - Vital Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-perspective {
+            perspective: 1000px;
+        }
+        .id-card-glow {
+            box-shadow: 0 0 40px -10px rgba(0, 88, 188, 0.15);
+        }
+        .qr-pattern {
+            background-image: radial-gradient(#e2e2e2 1px, transparent 1px);
+            background-size: 8px 8px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e8e8e8",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-surface-variant": "#414755",
+                        "tertiary": "#00647c",
+                        "primary-fixed-dim": "#adc6ff",
+                        "primary-container": "#0070eb",
+                        "background": "#f9f9f9",
+                        "surface-tint": "#005bc1",
+                        "outline": "#717786",
+                        "secondary-fixed": "#ffdad7",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f3f3f3",
+                        "on-secondary-container": "#fffbff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#001f28",
+                        "on-surface": "#1b1b1b",
+                        "tertiary-fixed": "#b6eaff",
+                        "secondary-container": "#dc3135",
+                        "primary-fixed": "#d8e2ff",
+                        "on-background": "#1b1b1b",
+                        "secondary": "#b81120",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "surface-dim": "#dadada",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#fefcff",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e2e2e2",
+                        "primary": "#0058bc",
+                        "on-tertiary-container": "#fafdff",
+                        "on-secondary-fixed-variant": "#930014",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "surface-container": "#eeeeee",
+                        "outline-variant": "#c1c6d7",
+                        "inverse-primary": "#adc6ff",
+                        "tertiary-container": "#007f9c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#410004",
+                        "tertiary-fixed-dim": "#49d6ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001a41",
+                        "inverse-surface": "#303030",
+                        "surface": "#f9f9f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-gutter": "16px",
+                        "stack-gap-sm": "8px",
+                        "container-padding": "24px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-lg": "32px",
+                        "grid-margin": "20px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant w-full fixed top-0 z-50">
+<div class="flex justify-between items-center px-grid-margin py-stack-gap-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-stack-gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-headline-md text-headline-md font-black text-primary">My Health Record</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="John Smith profile picture" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOItRZ7ROb9ia12s1KmuQJIi38yBwGFQAehJZvGgkstiaqJoRwhI8cLS9o_Oi5Amu6G84XcyelvXV0yhamh9hQBTnVy0--zfF4Gr_u2VRG8CBIcwRQdvrSwccq4LmCZyATBY-RFJAAflAiB3Qfk8jZKRYnBdY9Vk_-oRBiF4sO0bJZFKhgQ44a0EcXtiN_WyU6TGq1z4U821Pv028Rpw6pguIheS4eKvdZh4nVy-GQXu72ZRLFOYNJFMxnMV3-aOU3C7Y9RX7LG5dI"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-grid-margin pt-24 pb-32 flex flex-col items-center justify-center">
+<!-- Instructional Header -->
+<div class="text-center mb-stack-gap-lg max-w-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Hospital Identification</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Present this digital ID for check-in and access to Royal Brisbane and Women's Hospital services.</p>
+</div>
+<!-- ID Card Perspective Wrapper -->
+<div class="card-perspective w-full flex justify-center py-stack-gap-lg">
+<!-- The Physical Card Representation -->
+<div class="relative w-full max-w-[400px] aspect-[1.58/1] bg-surface-container-lowest rounded-xl border border-outline-variant id-card-glow transform transition-all duration-500 ease-out flex flex-col overflow-hidden" id="idCard">
+<!-- Card Header/Brand Stripe -->
+<div class="h-3 bg-primary w-full"></div>
+<div class="flex flex-1 p-6 gap-6">
+<!-- Left Column: Photo & QR -->
+<div class="flex flex-col gap-4 items-center">
+<!-- User Photo with modern frame -->
+<div class="w-24 h-24 rounded-lg bg-surface-container-low border border-outline-variant overflow-hidden shadow-sm">
+<img alt="John Smith" class="w-full h-full object-cover grayscale-[0.2]" data-alt="A clean, professional studio headshot of a mid-30s male, John Smith, with a friendly and trustworthy expression. The lighting is soft and corporate, set against a neutral, light gray background typical of institutional identification photos. The image is crisp with high clarity and balanced contrast, maintaining a minimalist healthcare aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDse4SVyxxxClAWFfwZWybsVze-RtNU2GmSthnCsS_JenZejFhlyJbe8wJh1jhr4g7I4xA9CKDZW3DAU-tQz9iku2DhvBW2rDyGsMubnDltHQ7UwmZPNAtP9Ma_qUhCfx-QRQjLXqfn-ONzPOU5hcKc_xuSJZPjlrTJaGZ8P6HIeJtJDyX3qi2U34-oAzgFpAs63o5GQAbMPKvEqV2KKVIuNapuetUlSwbKdv_k3De44_6ZdvBKhKymCQvOGc_9QcmhICm8iKgkYyVh"/>
+</div>
+<!-- Mini QR for fast scan -->
+<div class="w-16 h-16 bg-white p-1 border border-outline-variant rounded flex items-center justify-center">
+<div class="w-full h-full qr-pattern opacity-80"></div>
+</div>
+</div>
+<!-- Right Column: Details -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="mb-4">
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider mb-0.5">Institution</p>
+<h3 class="font-label-md text-label-md text-on-surface leading-tight">Royal Brisbane and Women's Hospital</h3>
+</div>
+<div class="space-y-3">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Name</p>
+<p class="font-headline-md text-headline-md text-on-surface -mt-1">John Smith</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">DOB</p>
+<p class="font-label-md text-label-md text-on-surface">12 May 1988</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">ID Number</p>
+<p class="font-label-md text-label-md text-on-surface">RBW-992-041</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Footer Logo -->
+<div class="flex items-center gap-1 opacity-40 grayscale mt-4">
+<span class="material-symbols-outlined text-[16px]" data-icon="health_and_safety">health_and_safety</span>
+<span class="font-label-sm text-label-sm font-bold">VITAL LEDGER</span>
+</div>
+</div>
+</div>
+<!-- Holographic Security Detail -->
+<div class="absolute top-6 right-6 w-12 h-12 rounded-full border border-primary/10 bg-gradient-to-tr from-primary/5 via-tertiary/10 to-transparent flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-primary/20 text-3xl" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+</div>
+<!-- Action Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-stack-gap-md w-full max-w-xl mt-stack-gap-lg">
+<button class="flex flex-col items-center justify-center p-4 bg-surface border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-primary mb-2 group-active:scale-95 transition-transform" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-md text-label-md text-on-surface">Full QR</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-surface border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-primary mb-2 group-active:scale-95 transition-transform" data-icon="share">share</span>
+<span class="font-label-md text-label-md text-on-surface">Share</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-surface border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-primary mb-2 group-active:scale-95 transition-transform" data-icon="download">download</span>
+<span class="font-label-md text-label-md text-on-surface">Export PDF</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-surface border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-primary mb-2 group-active:scale-95 transition-transform" data-icon="add_to_home_screen">add_to_home_screen</span>
+<span class="font-label-md text-label-md text-on-surface">Add Wallet</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-grid-margin bg-surface border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-12 h-12 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="folder">folder</span>
+<span class="font-label-sm text-label-sm">Records</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-12 h-12 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full p-2 w-12 h-12 scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="sr-only">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for the ID card: tilt on mouse move
+        const card = document.getElementById('idCard');
+        const main = document.querySelector('main');
+
+        main.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 45;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 45;
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        main.addEventListener('mouseleave', () => {
+            card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+        });
+
+        // Simulating loading state
+        window.addEventListener('load', () => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0px)';
+            }, 100);
+        });
+    </script>
+<script src="../wire.js"></script>
+</body></html>

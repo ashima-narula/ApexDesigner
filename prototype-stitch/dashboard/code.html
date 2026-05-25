@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Health Record - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f9f9f9",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-tint": "#005bc1",
+                        "primary-container": "#0070eb",
+                        "on-primary-fixed": "#001a41",
+                        "on-surface-variant": "#414755",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#b6eaff",
+                        "secondary-container": "#dc3135",
+                        "secondary-fixed": "#ffdad7",
+                        "on-secondary-container": "#fffbff",
+                        "outline-variant": "#c1c6d7",
+                        "on-tertiary-container": "#fafdff",
+                        "on-secondary-fixed": "#410004",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#007f9c",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "on-primary-container": "#fefcff",
+                        "primary": "#0058bc",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f3f3f3",
+                        "surface": "#f9f9f9",
+                        "secondary": "#b81120",
+                        "inverse-primary": "#adc6ff",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed-variant": "#930014",
+                        "outline": "#717786",
+                        "on-surface": "#1b1b1b",
+                        "tertiary": "#00647c",
+                        "inverse-surface": "#303030",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed": "#001f28",
+                        "surface-variant": "#e2e2e2",
+                        "surface-dim": "#dadada",
+                        "on-background": "#1b1b1b",
+                        "background": "#f9f9f9",
+                        "tertiary-fixed-dim": "#49d6ff",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#adc6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-gutter": "16px",
+                        "stack-gap-lg": "32px",
+                        "stack-gap-sm": "8px",
+                        "grid-margin": "20px",
+                        "stack-gap-md": "16px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-card {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .bento-card:active {
+            transform: scale(0.96);
+        }
+        .glass-effect {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-background border-b border-outline-variant dark:border-outline docked full-width top-0 z-50 flex justify-between items-center px-grid-margin py-stack-gap-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary ring-2 ring-primary-fixed">
+<img alt="John Smith profile picture" class="w-full h-full object-cover" data-alt="A professional headshot of a friendly man in his early thirties with a warm smile, set against a clean, softly lit clinic interior background. The lighting is bright and even, reinforcing an institutional trust and healthcare aesthetic with soft blue and white tones. The man is wearing a casual but neat business outfit, looking directly at the camera." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOzTxEx2uBZ6mX1aTPe77HWXNfU03KismIJHSgTJCsJyJD4jdVs-xtnmDJ4rmIXCbOruHHFQLa3guoM-bZ8aZOLBMgnDK0h3KuyOCTuZIOf99QJe7K5Z9zhBRaP0c2uo9OhLK8Pjkb0DbzbJayAlXpV0PwN7gXNni8P9rfhTFIRB0Oa5GIRuazMka2u-ksFp_PPh53WUIvrwFBxYNeeyxKJJFXnxUF8iEYkAxYBvXY_4P7TAm89HCH2NC6Uvnxf1F8xLkB-uWToDrE"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md-mobile text-primary dark:text-primary-fixed-dim font-black">John Smith</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Born 01-Jan-1990</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors p-2 rounded-full active:scale-95 transition-transform duration-100" data-icon="notifications">notifications</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-7xl px-grid-margin py-stack-gap-lg flex-1 mb-20">
+<!-- Welcome Section -->
+<section class="mb-stack-gap-lg">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">My Health Record</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Your medical registry at your fingertips.</p>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-grid-gutter">
+<!-- Reminders Card (Yellow) -->
+<button class="bento-card relative group overflow-hidden bg-[#FFB74D] rounded-xl p-6 flex flex-col justify-between h-48 w-full text-left shadow-sm hover:shadow-md transition-all" data-link="health_notes">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="event_note">event_note</span>
+<span class="bg-white/20 text-white font-label-md text-label-md px-3 py-1 rounded-full backdrop-blur-md">3 Active</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-white mb-1">Reminders</h2>
+<div class="flex items-center gap-2 text-white/90">
+<span class="material-symbols-outlined text-sm" data-icon="add_circle">add_circle</span>
+<span class="font-label-md text-label-md">Add new reminder</span>
+</div>
+</div>
+</button>
+<!-- Alert Card (Red) -->
+<button class="bento-card relative group overflow-hidden bg-secondary-container rounded-xl p-6 flex flex-col justify-between h-48 w-full text-left shadow-sm hover:shadow-md transition-all" data-link="prescriptions_home">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="warning">warning</span>
+<span class="bg-white/20 text-white font-label-md text-label-md px-3 py-1 rounded-full backdrop-blur-md">Urgent</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-white mb-1">Alert</h2>
+<p class="font-label-md text-label-md text-on-secondary-container">Prescription runs out in 2 days</p>
+</div>
+</button>
+<!-- Notification Card (Teal) -->
+<button class="bento-card relative group overflow-hidden bg-[#26A69A] rounded-xl p-6 flex flex-col justify-between h-48 w-full text-left shadow-sm hover:shadow-md transition-all md:col-span-2" data-link="notifications">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="mail">mail</span>
+<span class="bg-white/20 text-white font-label-md text-label-md px-3 py-1 rounded-full backdrop-blur-md">New</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-white mb-1">Notification</h2>
+<p class="font-label-md text-label-md text-white/90">Your lab results from 'Matter Hospital' are ready.</p>
+</div>
+<span class="font-label-md text-label-md text-white border border-white/40 px-4 py-2 rounded-lg group-hover:bg-white/10 transition-colors">View all (8)</span>
+</div>
+</button>
+</div>
+<!-- Access/Create Card (Primary Style) -->
+<section class="mt-stack-gap-lg">
+<button class="w-full bg-surface-container-low border border-outline-variant hover:bg-surface-container transition-colors rounded-xl p-6 flex items-center justify-between group active:scale-[0.98] transition-transform" data-link="medical_id">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-2xl" data-icon="person_add">person_add</span>
+</div>
+<div class="text-left">
+<h3 class="font-body-lg text-body-lg text-on-surface">Access or Create a MyHealth Record</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Manage medical records for someone else</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</section>
+<!-- Quick Stats / Asymmetric Section -->
+<section class="mt-stack-gap-lg flex flex-col md:flex-row gap-grid-gutter">
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant p-6 rounded-xl">
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-4">Latest Vitals</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-body-md text-body-md">Blood Pressure</span>
+<span class="font-headline-md text-headline-md text-primary">120/80</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-body-md text-body-md">Heart Rate</span>
+<span class="font-headline-md text-headline-md text-[#26A69A]">72 bpm</span>
+</div>
+</div>
+</div>
+<div class="flex-1 rounded-xl overflow-hidden relative min-h-[160px] group cursor-pointer">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+<img alt="Hospital Facility" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A clean, futuristic hospital hallway with bright, white walls and soft blue accent lighting. The perspective leads deep into the corridor, symbolizing progress and professional medical care. The image is captured in high resolution with a shallow depth of field, focusing on the pristine environment and sterile surfaces. The color palette consists of whites, greys, and clinical blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmZWmLdbizJYkej-Y3PirKYyf1dZzjIAIxxF1OnEQI5GIBMtm6o-WZVqbWuWXGeGVZvgX9VpS6oq0fo4NmFgcsBkSD9wXHzXPRBPxiFzLrAUIani22J4pY3sGqbjXp-jgP8uAbXrGL_9izNaW6hrdwAIUZRGZgFEXOADEIKDMUxiS4X-eL56p1KXOnLxE5saL7Dzo6RRQ88fB3WTk-6M4bt7ggenue-ybc5RPsG0r5bS14bkTYXLp1hmw1K6MX1nLcFzbh6tqZUQxM"/>
+<div class="absolute bottom-4 left-4 z-20 text-white">
+<span class="font-label-sm text-label-sm uppercase tracking-widest opacity-80">Local Facility</span>
+<h4 class="font-headline-md text-headline-md">Matter Hospital</h4>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-grid-margin bg-surface dark:bg-background border-t border-outline-variant dark:border-outline z-50">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-2 w-12 h-12 hover:text-primary dark:hover:text-primary-fixed transition-colors active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="folder">folder</span>
+<span class="font-label-sm text-label-sm">Records</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-on-primary-fixed-variant text-on-primary-container dark:text-primary-fixed rounded-full p-2 w-12 h-12 hover:text-primary dark:hover:text-primary-fixed transition-colors active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="hidden">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-2 w-12 h-12 hover:text-primary dark:hover:text-primary-fixed transition-colors active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+<script>
+        // Simple interactivity for demonstration
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.classList.add('scale-95');
+            });
+            card.addEventListener('mouseup', () => {
+                card.classList.remove('scale-95');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('scale-95');
+            });
+        });
+    </script>
+<script src="../wire.js"></script>
+</body></html>

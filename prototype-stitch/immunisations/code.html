@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Immunisations History | My Health Record</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 19px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e2e2e2;
+            z-index: 0;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#fafdff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface-container-highest": "#e2e2e2",
+                        "inverse-primary": "#adc6ff",
+                        "outline-variant": "#c1c6d7",
+                        "secondary": "#b81120",
+                        "on-secondary-fixed-variant": "#930014",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#49d6ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1b1b1b",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1b1b",
+                        "on-surface-variant": "#414755",
+                        "surface-bright": "#f9f9f9",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-container": "#fefcff",
+                        "background": "#f9f9f9",
+                        "surface-dim": "#dadada",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#00647c",
+                        "secondary-container": "#dc3135",
+                        "on-tertiary-fixed": "#001f28",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#b6eaff",
+                        "outline": "#717786",
+                        "on-primary-fixed": "#001a41",
+                        "secondary-fixed": "#ffdad7",
+                        "on-secondary-container": "#fffbff",
+                        "inverse-surface": "#303030",
+                        "surface-container": "#eeeeee",
+                        "surface-variant": "#e2e2e2",
+                        "primary": "#0058bc",
+                        "on-secondary-fixed": "#410004",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#007f9c",
+                        "surface-tint": "#005bc1",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "primary-container": "#0070eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-gap-sm": "8px",
+                        "grid-gutter": "16px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-lg": "32px",
+                        "grid-margin": "20px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-20">
+<!-- Top App Bar -->
+<header class="bg-surface sticky top-0 z-40 border-b border-outline-variant">
+<div class="flex justify-between items-center px-grid-margin py-stack-gap-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged man with a friendly expression, set against a clean, softly blurred office background. The lighting is bright and even, reflecting a corporate medical environment. The image uses a natural color palette with cool blue undertones to align with the healthcare brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1xIMjSXSGEPQxgpiTZzawZ8uj5Rv-LkKN2NtpsnQZhV_ePl26BWRyp8uynQMw5HhEXhdO1cqdtduTnxU9rMCDJQqqnbhDO3NuLhdLPwamYJ3SmbPu1Myjn1CchyYDMX9bjV9brQqRXUrLMMGWT2UvT3jUwPCQhAnm6fxiLu4Nv2c4eaDVOWKlXv5AK_2Zjs26gXZY73DUpt0zu96DWHxPwElENU6L4JE_JoHS-I_M5xn9mc8qDwQui2_09a0ywsdkso-9Q7aNMoEu"/>
+</div>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md font-black text-primary">My Health Record</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-grid-margin py-stack-gap-lg">
+<!-- Next Due Date Highlight Section -->
+<section class="mb-stack-gap-lg">
+<div class="bg-primary text-on-primary p-container-padding rounded-xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-stack-gap-md relative overflow-hidden">
+<div class="absolute right-0 top-0 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'wght' 700">event_upcoming</span>
+</div>
+<div class="relative z-10">
+<span class="font-label-sm text-label-sm uppercase tracking-wider opacity-90">Next Scheduled Vaccination</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mt-1">Influenza (Seasonal)</h2>
+<div class="flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+<p class="font-body-lg text-body-lg">Due: 15 October 2024</p>
+</div>
+</div>
+<div class="relative z-10">
+<button class="bg-on-primary text-primary px-6 py-3 rounded-full font-label-md text-label-md hover:scale-105 active:scale-95 transition-all shadow-md">
+                        Book Appointment
+                    </button>
+</div>
+</div>
+</section>
+<!-- Timeline Section -->
+<section>
+<div class="flex items-center justify-between mb-stack-gap-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Immunisation History</h3>
+<div class="flex gap-2">
+<button class="flex items-center gap-1 px-3 py-1.5 border border-outline rounded-lg text-label-sm font-label-sm hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Filter
+                    </button>
+<button class="flex items-center gap-1 px-3 py-1.5 border border-outline rounded-lg text-label-sm font-label-sm hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Export PDF
+                    </button>
+</div>
+</div>
+<div class="relative">
+<div class="timeline-line"></div>
+<!-- Timeline Entries -->
+<div class="space-y-stack-gap-lg">
+<!-- Entry 1 -->
+<div class="relative pl-12">
+<!-- Timeline Node -->
+<div class="absolute left-0 top-0 w-10 h-10 bg-white border-2 border-primary rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1">vaccines</span>
+</div>
+<!-- Card Content -->
+<div class="bg-white border border-outline-variant p-container-padding rounded-xl hover:shadow-md transition-shadow">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h4 class="font-headline-md text-body-lg font-bold text-on-surface">COVID-19 (Comirnaty)</h4>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-0.5 rounded-full text-label-sm font-label-sm">Booster 2</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-2 gap-x-8 mt-4">
+<div>
+<p class="text-outline font-label-sm text-label-sm uppercase">Date Administered</p>
+<p class="font-body-md text-body-md text-on-surface">12 March 2024</p>
+</div>
+<div>
+<p class="text-outline font-label-sm text-label-sm uppercase">Provider</p>
+<p class="font-body-md text-body-md text-on-surface">Central City Medical Center</p>
+</div>
+<div>
+<p class="text-outline font-label-sm text-label-sm uppercase">Batch Number</p>
+<p class="font-body-md text-body-md text-on-surface">FK-9021-X</p>
+</div>
+<div>
+<p class="text-outline font-label-sm text-label-sm uppercase">Site</p>
+<p class="font-body-md text-body-md text-on-surface">Left Arm (Deltoid)</p>
+</div>
+</div>
+</div>
+<button class="text-primary hover:underline font-label-md text-label-md flex items-center gap-1">
+                                    View Certificate
+                                    <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Entry 2 -->
+<div class="relative pl-12">
+<div class="absolute left-0 top-0 w-10 h-10 bg-white border-2 border-outline rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-outline text-[20px]">vaccines</span>
+</div>
+<div class="bg-white border border-outline-variant p-container-padding rounded-xl hover:shadow-md transition-shadow">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h4 class="font-headline-md text-body-lg font-bold text-on-surface">Tetanus, Diphtheria, Pertussis (dTpa)</h4>
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded-full text-label-sm font-label-sm">Booster</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-2 gap-x-8 mt-4">
+<div>
+<p class="text-outline font-label-sm text-label-sm uppercase">Date Administered</p>
+<p class="font-body-md text-body-md text-on-surface">05 August 2022</p>
+</div>
+<div>
+<p class="text-outline font-label-sm text-label-sm uppercase">Provider</p>
+<p class="font-body-md text-body-md text-on-surface">Dr. Sarah Jenkins</p>
+</div>
+<div>
+<p class="text-outline font-label-sm text-label-sm uppercase">Batch Number</p>
+<p class="font-body-md text-body-md text-on-surface">BT-5541-A</p>
+</div>
+<div>
+<p class="text-outline font-label-sm text-label-sm uppercase">Site</p>
+<p class="font-body-md text-body-md text-on-surface">Right Arm</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Entry 3 -->
+<div class="relative pl-12">
+<div class="absolute left-0 top-0 w-10 h-10 bg-white border-2 border-outline rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-outline text-[20px]">vaccines</span>
+</div>
+<div class="bg-white border border-outline-variant p-container-padding rounded-xl hover:shadow-md transition-shadow">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h4 class="font-headline-md text-body-lg font-bold text-on-surface">Hepatitis B</h4>
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded-full text-label-sm font-label-sm">Dose 3 of 3</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-2 gap-x-8 mt-4">
+<div>
+<p class="text-outline font-label-sm text-label-sm uppercase">Date Administered</p>
+<p class="font-body-md text-body-md text-on-surface">19 January 2021</p>
+</div>
+<div>
+<p class="text-outline font-label-sm text-label-sm uppercase">Provider</p>
+<p class="font-body-md text-body-md text-on-surface">St. Jude Community Health</p>
+</div>
+<div>
+<p class="text-outline font-label-sm text-label-sm uppercase">Batch Number</p>
+<p class="font-body-md text-body-md text-on-surface">HB-0022-M</p>
+</div>
+<div>
+<p class="text-outline font-label-sm text-label-sm uppercase">Site</p>
+<p class="font-body-md text-body-md text-on-surface">Left Arm</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Information Card -->
+<section class="mt-stack-gap-lg">
+<div class="bg-surface-container-low border border-outline-variant p-container-padding rounded-xl">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary">info</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Missing something?</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">If your records appear incomplete or incorrect, please contact your immunization provider or the National Immunisation Register directly.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-grid-margin bg-surface border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full p-2 w-12 h-12 transition-transform active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">folder</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary p-2 w-12 h-12 transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary p-2 w-12 h-12 transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+</nav>
+<!-- FAB (Suppressed on Details screen, but kept for main record view as per mandate logic context) -->
+<button class="fixed right-6 bottom-20 w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined">add</span>
+</button>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.rounded-xl').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if(!card.classList.contains('bg-primary')) {
+                    card.style.transform = 'translateY(-2px)';
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+
+        // Simulating loading states or interactions if needed
+        console.log("Immunisation Record loaded successfully.");
+    </script>
+<script src="../wire.js"></script>
+</body></html>

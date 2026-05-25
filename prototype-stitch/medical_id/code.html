@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Medical ID - John Smith</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(12, 1fr);
+                gap: 24px;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error-container": "#93000a",
+                      "outline-variant": "#c1c6d7",
+                      "tertiary-fixed-dim": "#49d6ff",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#1b1b1b",
+                      "on-surface": "#1b1b1b",
+                      "tertiary-container": "#007f9c",
+                      "surface-bright": "#f9f9f9",
+                      "on-primary-fixed-variant": "#004493",
+                      "primary-fixed-dim": "#adc6ff",
+                      "primary-container": "#0070eb",
+                      "secondary-container": "#dc3135",
+                      "on-secondary-fixed": "#410004",
+                      "secondary": "#b81120",
+                      "primary": "#0058bc",
+                      "error-container": "#ffdad6",
+                      "surface-dim": "#dadada",
+                      "surface-tint": "#005bc1",
+                      "inverse-primary": "#adc6ff",
+                      "secondary-fixed-dim": "#ffb3ae",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error": "#ffffff",
+                      "surface-container": "#eeeeee",
+                      "surface-variant": "#e2e2e2",
+                      "inverse-surface": "#303030",
+                      "tertiary-fixed": "#b6eaff",
+                      "error": "#ba1a1a",
+                      "outline": "#717786",
+                      "surface-container-highest": "#e2e2e2",
+                      "secondary-fixed": "#ffdad7",
+                      "primary-fixed": "#d8e2ff",
+                      "on-tertiary-fixed-variant": "#004e60",
+                      "surface-container-low": "#f3f3f3",
+                      "on-secondary-fixed-variant": "#930014",
+                      "on-tertiary-fixed": "#001f28",
+                      "tertiary": "#00647c",
+                      "on-secondary-container": "#fffbff",
+                      "inverse-on-surface": "#f1f1f1",
+                      "on-surface-variant": "#414755",
+                      "on-primary-container": "#fefcff",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#001a41",
+                      "on-tertiary-container": "#fafdff",
+                      "on-primary": "#ffffff",
+                      "background": "#f9f9f9",
+                      "surface-container-high": "#e8e8e8",
+                      "surface": "#f9f9f9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "grid-gutter": "16px",
+                      "container-padding": "24px",
+                      "grid-margin": "20px",
+                      "stack-gap-lg": "32px",
+                      "stack-gap-sm": "8px",
+                      "stack-gap-md": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Hanken Grotesk"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "label-md": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "body-md": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-50 border-b border-outline-variant w-full">
+<div class="flex justify-between items-center px-grid-margin py-stack-gap-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant bg-surface-container">
+<img alt="John Smith profile picture" class="w-full h-full object-cover" data-alt="A professional studio portrait of a mid-40s male healthcare professional with a kind expression. The lighting is soft and high-key, emphasizing a clean and clinical modern aesthetic. The background is a minimalist, neutral gray, consistent with a high-end medical identity interface. The overall mood is one of trust, reliability, and calm professional transparency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQNZVXf1n8wWsb5ki3LWQg819xaRhWeOM1tnZdUogM28RVG_-IA3Ym0dj9gzPtie7E_ZVpThLqE8utmC0rG4eEcuPjkFVssOiBN5y91n_wYs-U8GPbedMFTPOZ6XLF2FQWHd8ThSKT6KGhiS2QjS1AlTMSFWFwPug4JHjGK7o79BsXSkj7xUf09avAX1n3ddP3espfq2G0ivj3yy3Z4qclVWP8unpWdhWCcwe9ZTChvq_KdouJC5vvHrFid1PUZs7xrQuqc11g-GEm"/>
+</div>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md font-black text-primary">My Health Record</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-low transition-colors p-2 rounded-full active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-grid-margin py-stack-gap-lg">
+<!-- Urgent Alert Banner -->
+<section class="mb-stack-gap-lg">
+<div class="bg-secondary p-4 rounded-xl flex items-center gap-4 text-on-secondary shadow-md">
+<span class="material-symbols-outlined text-4xl" data-icon="emergency_home" data-weight="fill">emergency_home</span>
+<div>
+<h2 class="font-headline-md text-headline-md-mobile">Medical ID</h2>
+<p class="font-body-md text-body-md opacity-90">In case of emergency, provide this screen to first responders.</p>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="bento-grid">
+<!-- Patient Primary Info -->
+<div class="col-span-2 md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
+<div class="w-32 h-32 rounded-full border-4 border-primary p-1">
+<img alt="John Smith" class="w-full h-full object-cover rounded-full" data-alt="Close up portrait of John Smith, a man in his 40s, looking directly at the camera with a calm and reassuring smile. The photo is set against a clean, white medical facility backdrop with soft, professional lighting. The aesthetic is clean, modern, and trustworthy, perfectly suited for an institutional healthcare identity system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH_zL860wtbsMA5s0Q38yOBvP6GSai6mztuzEi6iDWOYroZ0BiGz4fhcXeDNSTIlrTZptEKAi0GYd2QuZDG62UEW_dDM1mixI6H7-QnqGy-RLTpxETlVuVv9Kvu599Z382O0iR5N3oaGafPKIJQkODfj5_HJHbxb-LCQBsQoc8UmlPg5W-Fra6A99O0xcTk9iTZUmGSXR4s-IRUWppd0c6WIY4b_8FE0M4-EcEC9umz_72OXKE_zYYDi2KYbN3bbLM0YfAUYIcUes-"/>
+</div>
+<div class="text-center md:text-left flex-grow">
+<h3 class="font-display-lg text-display-lg text-on-surface">John Smith</h3>
+<div class="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
+<div class="bg-surface-container-high px-4 py-2 rounded-lg">
+<span class="font-label-sm text-label-sm block text-outline">Date of Birth</span>
+<span class="font-label-md text-label-md">May 12, 1982</span>
+</div>
+<div class="bg-secondary-container px-4 py-2 rounded-lg text-on-secondary-container">
+<span class="font-label-sm text-label-sm block opacity-80">Blood Type</span>
+<span class="font-headline-md text-headline-md font-black">O+</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 w-full md:w-auto">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-full flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="share">share</span> Share Record
+                    </button>
+<button class="border-2 border-outline text-on-surface font-label-md text-label-md px-6 py-3 rounded-full flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="qr_code">qr_code</span> View QR
+                    </button>
+</div>
+</div>
+<!-- Allergies Section (High Contrast) -->
+<div class="col-span-2 md:col-span-4 bg-secondary-container rounded-xl p-6 border-2 border-secondary">
+<div class="flex items-center gap-2 mb-4 text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="warning" data-weight="fill">warning</span>
+<h4 class="font-headline-md text-headline-md-mobile">Allergies</h4>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-on-secondary-container text-secondary-container px-3 py-1 rounded-full font-label-md text-label-md">Penicillin</span>
+<span class="bg-on-secondary-container text-secondary-container px-3 py-1 rounded-full font-label-md text-label-md">Pollen</span>
+<span class="bg-on-secondary-container text-secondary-container px-3 py-1 rounded-full font-label-md text-label-md">Cats</span>
+</div>
+<p class="mt-4 font-body-md text-body-md text-on-secondary-container font-bold">Severity: High - Risk of Anaphylaxis</p>
+</div>
+<!-- Medications -->
+<div class="col-span-2 md:col-span-6 bg-surface-container-lowest border border-outline-variant rounded-xl p-6">
+<div class="flex items-center gap-2 mb-6 text-primary">
+<span class="material-symbols-outlined" data-icon="medication">medication</span>
+<h4 class="font-headline-md text-headline-md-mobile">Critical Medications</h4>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center p-3 bg-surface rounded-lg border-l-4 border-primary">
+<div>
+<span class="font-label-md text-label-md block">Lisinopril</span>
+<span class="font-label-sm text-label-sm text-outline">10mg - Once Daily (Hypertension)</span>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+<div class="flex justify-between items-center p-3 bg-surface rounded-lg border-l-4 border-primary">
+<div>
+<span class="font-label-md text-label-md block">Metformin</span>
+<span class="font-label-sm text-label-sm text-outline">500mg - Twice Daily (Diabetes)</span>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Emergency Contacts -->
+<div class="col-span-2 md:col-span-6 bg-surface-container-lowest border border-outline-variant rounded-xl p-6">
+<div class="flex items-center gap-2 mb-6 text-tertiary">
+<span class="material-symbols-outlined" data-icon="contact_emergency">contact_emergency</span>
+<h4 class="font-headline-md text-headline-md-mobile">Emergency Contacts</h4>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<span class="font-label-md text-label-md block text-on-surface">Sarah Smith</span>
+<span class="font-label-sm text-label-sm text-outline">Spouse</span>
+</div>
+</div>
+<a class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-colors" href="tel:555-0123">
+<span class="material-symbols-outlined">call</span>
+</a>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<span class="font-label-md text-label-md block text-on-surface">Dr. James Wilson</span>
+<span class="font-label-sm text-label-sm text-outline">Primary Physician</span>
+</div>
+</div>
+<a class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-colors" href="tel:555-0987">
+<span class="material-symbols-outlined">call</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Additional Medical Notes -->
+<div class="col-span-2 md:col-span-12 bg-surface-container-high rounded-xl p-6 border border-outline-variant">
+<h4 class="font-label-md text-label-md mb-2 text-on-surface-variant">Important Medical Notes</h4>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                    Patient has a titanium plate in the left forearm (fracture repair 2018). History of Type 2 Diabetes managed via oral medication. No history of tobacco use. Prior surgeries include appendectomy (1995) and knee arthroscopy (2012).
+                </p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-grid-margin bg-surface border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors p-2 w-12 h-12" href="#">
+<span class="material-symbols-outlined" data-icon="folder">folder</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors p-2 w-12 h-12" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full p-2 w-12 h-12 scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person" data-weight="fill">person</span>
+</a>
+</nav>
+<script>
+        // Simple interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('Action triggered');
+            });
+        });
+    </script>
+<script src="../wire.js"></script>
+</body></html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clinical Records - Vital Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#fafdff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface-container-highest": "#e2e2e2",
+                        "inverse-primary": "#adc6ff",
+                        "outline-variant": "#c1c6d7",
+                        "secondary": "#b81120",
+                        "on-secondary-fixed-variant": "#930014",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#49d6ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1b1b1b",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1b1b",
+                        "on-surface-variant": "#414755",
+                        "surface-bright": "#f9f9f9",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-container": "#fefcff",
+                        "background": "#f9f9f9",
+                        "surface-dim": "#dadada",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#00647c",
+                        "secondary-container": "#dc3135",
+                        "on-tertiary-fixed": "#001f28",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#b6eaff",
+                        "outline": "#717786",
+                        "on-primary-fixed": "#001a41",
+                        "secondary-fixed": "#ffdad7",
+                        "on-secondary-container": "#fffbff",
+                        "inverse-surface": "#303030",
+                        "surface-container": "#eeeeee",
+                        "surface-variant": "#e2e2e2",
+                        "primary": "#0058bc",
+                        "on-secondary-fixed": "#410004",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#007f9c",
+                        "surface-tint": "#005bc1",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "primary-container": "#0070eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-gap-sm": "8px",
+                        "grid-gutter": "16px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-lg": "32px",
+                        "grid-margin": "20px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e2e2; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface docked full-width top-0 border-b border-outline-variant z-50 sticky">
+<div class="flex justify-between items-center px-grid-margin py-stack-gap-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="John Smith profile picture" class="w-full h-full object-cover" data-alt="A professional, clean-cut headshot of a middle-aged man in a soft-lit medical office setting. The lighting is bright and airy, reflecting a high-key light mode aesthetic. He has a warm, trustworthy expression, wearing a minimalist white shirt. The background is slightly blurred with soft cool tones of clinical blue and white to match the healthcare brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr4_2P7d2Z98BXdZIbihI_ffafXQy1DC3IoQkdA9bW1ej---B342AizJQ00cMGyZdengDp3QbgGlhEe4Naka5uWjKPraYqB1Y3F4nMpnQhDi81zkDyNt0g0nm_5UxkjH-9LTPD1Nj55rTlkOd5XCeL7Cw_EpNLBvE3UIMThgDjdbv0r4wuF3uUrZK4MGeGrWU0yZp66cBxUry0TIN0-Ma7BDDK4Tw-ptjIh_0tQ7i-J9kU3PQp8iUmG9B662H_sxjiSneVATSR1Ljm"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-black text-primary">My Health Record</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-grid-margin py-stack-gap-lg">
+<!-- Search & Filter Section -->
+<section class="mb-stack-gap-lg space-y-stack-gap-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl border border-outline-variant bg-surface-bright focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-body-md text-body-md shadow-sm" placeholder="Search clinical documents, providers, or dates..." type="text"/>
+</div>
+<!-- Quick Category Filters -->
+<div class="flex gap-2 overflow-x-auto pb-2 custom-scrollbar no-scrollbar">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-md text-label-md whitespace-nowrap active:scale-95 transition-transform">All Records</button>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-highest transition-colors">Visit Summaries</button>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-highest transition-colors">Lab Results</button>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-highest transition-colors">Imaging</button>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-highest transition-colors">Referrals</button>
+</div>
+</section>
+<!-- Bento Grid Records Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-grid-gutter">
+<!-- Category: Visit Summaries (Featured Section) -->
+<div class="md:col-span-8 space-y-stack-gap-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="history_edu">history_edu</span>
+                        Visit Summaries
+                    </h2>
+<button class="text-primary font-label-md text-label-md hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-1 gap-stack-gap-md">
+<div class="bg-white border border-outline-variant p-container-padding rounded-xl flex items-center justify-between group hover:border-primary transition-all hover:shadow-md cursor-pointer">
+<div class="flex gap-4 items-center">
+<div class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="medical_information">medical_information</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-bold">Annual Physical Examination</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Oct 12, 2023 • Dr. Elena Rodriguez</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="bg-white border border-outline-variant p-container-padding rounded-xl flex items-center justify-between group hover:border-primary transition-all hover:shadow-md cursor-pointer">
+<div class="flex gap-4 items-center">
+<div class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="stethoscope">stethoscope</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-bold">Cardiology Consultation</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Aug 05, 2023 • Dr. Marcus Chen</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Category: Lab Results (Sidebar Style) -->
+<div class="md:col-span-4 space-y-stack-gap-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="biotech">biotech</span>
+                        Lab Results
+                    </h2>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden">
+<div class="p-container-padding border-b border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-sm text-label-sm text-secondary font-bold px-2 py-0.5 bg-secondary-fixed rounded">NEW</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Yesterday</span>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface font-bold">Comprehensive Metabolic Panel</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Quest Diagnostics • Dr. Rodriguez</p>
+</div>
+<div class="p-container-padding border-b border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sep 15, 2023</span>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface font-bold">Lipid Panel &amp; A1C</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Quest Diagnostics • Dr. Rodriguez</p>
+</div>
+<button class="w-full p-stack-gap-md font-label-md text-label-md text-primary text-center hover:bg-surface-container-highest transition-colors">
+                        View More Lab History
+                    </button>
+</div>
+</div>
+<!-- Category: Imaging / Radiology (Wide Card) -->
+<div class="md:col-span-12 mt-stack-gap-md">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-stack-gap-md flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="radiology">radiology</span>
+                    Imaging / Radiology
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-grid-gutter">
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+<div class="h-40 bg-surface-container-highest relative overflow-hidden">
+<img alt="MRI Scan Visualization" class="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A clean, high-contrast medical imaging visualization of a head MRI on a dark sleek digital screen. The image emphasizes clinical precision with bright cyan and white structural lines against a deep charcoal background. The lighting is reminiscent of a high-end medical suite with soft blue ambient glows, maintaining a professional and institutional healthcare aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoJ9aFzjNIWaWzlrRon0eKCL2cH6IegudpguC3tko0tVgXuXVq5lqbqXTKgo3_d3jiOjaHHdHdNpzvcTWUVQ65dHQpdxp5ivNi6T7mzRYF5FChn07xINXfakW8YKskDJEAneQHpJLrEicl_i6sAJ63WT0lMccKc_tbn3AXiU0ZutYnGh3GQaQqbStO8BxuT5KgUzyT88rdrdPFA2Yle-h3w9prLR_n-P3qBVFvlCpr_mDDRdCr5ot3Ran3bjsaJGZeIP9jmz199crK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<span class="bg-primary px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">DICOM Ready</span>
+</div>
+</div>
+<div class="p-container-padding">
+<h3 class="font-body-lg text-body-lg font-bold">Chest X-Ray</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Nov 22, 2023 • North City Radiology</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Dr. Michael Thorne</p>
+</div>
+</div>
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+<div class="h-40 bg-surface-container-highest relative overflow-hidden">
+<img alt="Ultrasound Equipment" class="w-full h-full object-cover grayscale opacity-80" data-alt="A macro shot of professional medical imaging equipment in a brightly lit, sterile examination room. The focus is on a high-definition monitor displaying subtle anatomical outlines in cool grays and crisp whites. The room is filled with soft, natural light, creating a calm and secure healthcare environment with high-key lighting and a professional modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL4Dkn0QGVz7HRczd_82xkgfxmScesLsEtPhxIgzeCG7zwGc1iB38Q0i-2y_y6gEyPKimVyz5PcPIhgqpnF-4W3rPq7tGEIt40mLLI-BKqAgzGJoLQl42tKXEf0N7hISO4iZYWCMidWMBz7wndHjS60-_Q8nX_xOLwry3BZtapY2_1Zy0mBgoK_t5dn1QoKP5bvDRxW0DDd5owbgXVUXo-OWdSLZTHrZSf8eAgrHAb5pE7B-2VAvy_826CLrlKT5Rhi831_a2F_c-b"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+<div class="p-container-padding">
+<h3 class="font-body-lg text-body-lg font-bold">Abdominal Ultrasound</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Oct 30, 2023 • General Medical Imaging</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Dr. Sarah Jenkins</p>
+</div>
+</div>
+<div class="flex flex-col justify-center items-center bg-surface-container-low border-2 border-dashed border-outline-variant rounded-xl p-stack-gap-lg text-center opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-outline mb-2" data-icon="cloud_upload">cloud_upload</span>
+<h3 class="font-body-md text-body-md font-bold text-on-surface">Upload External Scan</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Add CD or Digital records from other providers</p>
+</div>
+</div>
+</div>
+<!-- Category: Referral Letters -->
+<div class="md:col-span-12 mt-stack-gap-md">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-stack-gap-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="forward_to_inbox">forward_to_inbox</span>
+                    Referral Letters
+                </h2>
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden">
+<table class="w-full text-left font-body-md text-body-md">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-4 font-label-md text-label-md text-on-surface-variant">Specialist / Purpose</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant">Date Issued</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant">Status</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4">
+<div class="font-bold">Dermatology Referral</div>
+<div class="text-label-sm text-on-surface-variant">Routine Check-up</div>
+</td>
+<td class="p-4 text-on-surface-variant">Dec 01, 2023</td>
+<td class="p-4"><span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-0.5 rounded-full text-label-sm">Active</span></td>
+<td class="p-4 text-primary font-bold cursor-pointer hover:underline">Download</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4">
+<div class="font-bold">Physical Therapy</div>
+<div class="text-label-sm text-on-surface-variant">Post-Op Recovery</div>
+</td>
+<td class="p-4 text-on-surface-variant">Sep 12, 2023</td>
+<td class="p-4"><span class="bg-outline-variant text-on-surface-variant px-2 py-0.5 rounded-full text-label-sm">Closed</span></td>
+<td class="p-4 text-primary font-bold cursor-pointer hover:underline">View</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-grid-margin bg-surface border-t border-outline-variant z-50 md:hidden">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full p-2 w-12 h-12 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="folder" style="font-variation-settings: 'FILL' 1;">folder</span>
+<span class="font-label-sm text-label-sm hidden">Records</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-12 h-12 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm hidden">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-12 h-12 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm hidden">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.cursor-pointer').forEach(item => {
+            item.addEventListener('mousedown', () => {
+                item.style.transform = 'scale(0.99)';
+            });
+            item.addEventListener('mouseup', () => {
+                item.style.transform = 'scale(1)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'scale(1)';
+            });
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+    </script>
+<script src="../wire.js"></script>
+</body></html>

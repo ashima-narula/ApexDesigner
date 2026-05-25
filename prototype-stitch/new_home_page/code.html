@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Vital Ledger - Home</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Hanken Grotesk', 'sans-serif'],
+          },
+          colors: {
+            'vital-primary': '#007aff',
+            'vital-emergency': '#ff7a6a',
+            'vital-surface': '#f9f9f9',
+          },
+          borderRadius: {
+            'vital-round': '8px',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-layout">
+    /* Ensure the app takes full viewport height for mobile experience */
+    body {
+      background-color: #f9f9f9;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .safe-area-top {
+      padding-top: env(safe-area-inset-top);
+    }
+    .safe-area-bottom {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    /* Grid tile aspect ratio */
+    .grid-tile {
+      aspect-ratio: 1 / 1;
+    }
+  </style>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" class=""></head>
+<body class="font-sans text-gray-900 min-h-screen flex flex-col">
+<!-- BEGIN: MainHeader -->
+<header class="bg-white px-6 pt-12 pb-4 border-b border-gray-200 safe-area-top">
+<div class="flex justify-between items-start mb-2">
+<!-- User Information -->
+<div data-purpose="user-identity">
+<h1 class="text-3xl font-bold text-gray-800 leading-tight">John Smith</h1>
+<p class="text-sm font-medium text-gray-600">Born 01-Jan-1990</p>
+</div>
+<!-- Brand Logos -->
+<div class="flex items-center space-x-2" data-purpose="brand-logos">
+<!-- Placeholder for Government/App Logos as seen in image -->
+<div class="flex items-center bg-gray-50 p-1 rounded">
+<img alt="Government Health Agency" class="h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsiNwoPDeDXOEz7Hs3sEBmR0yrODeP2QKYWnE9zInUH9dnch3mmEEJJ17gOSGIiVqVz_s04EEEwdQXAu7BVTS1Iw1NSnHqrqsHdj6SyvaGBYRCB7gjaUmAXQ5uXQVMbhX02wQN3CLuMZdBIwpZPvf3Kj5kMuT32u1O245zsxxQvxU7FA_UBtUdfWhu_Xcj7s75K_bgafJ6C-wEH0f0sxr7Rq1kEChgcxP2l7IAkQQsyMq1MJCm6PfDYbAP5bB2CUXGlL1Yc2uzDLiA">
+</div>
+</div>
+</div>
+<!-- Horizontal divider line as per design -->
+<div class="w-full h-[2px] bg-gray-800 mt-2"></div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-grow p-6 overflow-y-auto">
+<!-- 2-Column Grid of Action Tiles -->
+<div class="grid grid-cols-2 gap-4" id="home-grid">
+<!-- 1. Emergency Contact / Medical ID -->
+<button aria-label="Emergency Contact" class="grid-tile bg-vital-emergency rounded-vital-round shadow-sm flex flex-col items-center justify-center transition-transform active:scale-95" data-link="hospital_id_card"><svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="2" y2="22"></line><line x1="4.93" x2="19.07" y1="4.93" y2="19.07"></line><line x1="2" x2="22" y1="12" y2="12"></line><line x1="4.93" x2="19.07" y1="19.07" y2="4.93"></line></svg><span class="text-white mt-2 font-semibold text-base" style="opacity: 0;">Emergency</span></button>
+<!-- 2. My Doctor -->
+<button aria-label="Medical ID" class="grid-tile bg-vital-primary rounded-vital-round shadow-sm flex flex-col items-center justify-center transition-transform active:scale-95" data-link="medical_id"><span class="material-symbols-outlined text-white text-6xl">badge</span><span class="text-white mt-2 font-semibold text-base">Medical ID</span></button>
+<!-- 3. My Medical Record -->
+<button aria-label="My Medical Record" class="grid-tile bg-vital-primary rounded-vital-round shadow-sm flex flex-col items-center justify-center transition-transform active:scale-95 text-white" data-link="records_home"><span class="material-symbols-outlined text-white text-6xl">folder_shared</span><span class="text-white mt-2 font-semibold text-base">Records</span></button>
+<!-- 4. My Prescriptions -->
+<button aria-label="My Prescriptions" class="grid-tile bg-vital-primary rounded-vital-round shadow-sm flex flex-col items-center justify-center transition-transform active:scale-95 relative overflow-hidden text-white" data-link="prescriptions_home"><span class="material-symbols-outlined text-white text-6xl">prescriptions</span><span class="text-white mt-2 font-semibold text-base">Prescriptions</span></button>
+<!-- 5. My Profile -->
+<button aria-label="My Profile" class="grid-tile bg-vital-primary rounded-vital-round shadow-sm flex flex-col items-center justify-center transition-transform active:scale-95" data-link="profile_home"><span class="material-symbols-outlined text-white text-6xl">person</span><span class="text-white mt-2 font-semibold text-base">Profile</span></button>
+<!-- 6. Settings -->
+<button aria-label="Settings" class="grid-tile bg-vital-primary rounded-vital-round shadow-sm flex flex-col items-center justify-center transition-transform active:scale-95 text-white" data-link="profile_home"><span class="material-symbols-outlined text-white text-6xl">settings</span><span class="text-white mt-2 font-semibold text-base">Settings</span></button>
+<!-- 7. Notifications -->
+<button aria-label="Notifications" class="grid-tile bg-vital-primary rounded-vital-round shadow-sm flex flex-col items-center justify-center transition-transform active:scale-95" data-link="notifications"><span class="material-symbols-outlined text-white text-6xl">notifications</span><span class="text-white mt-2 font-semibold text-base">Alerts</span></button>
+<!-- 8. Info -->
+<button aria-label="Info" class="grid-tile bg-vital-primary rounded-vital-round shadow-sm flex flex-col items-center justify-center transition-transform active:scale-95 text-white" data-link="onboarding"><span class="material-symbols-outlined text-white text-6xl">info</span><span class="text-white mt-2 font-semibold text-base">Info</span></button>
+</div>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: BottomNavigationBar -->
+<nav class="bg-white border-t border-gray-200 safe-area-bottom">
+<div class="flex justify-around items-center h-16">
+<button class="flex flex-col items-center text-vital-primary" data-purpose="nav-home" data-link="dashboard">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+<span class="text-[10px] mt-1 font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center text-gray-400" data-purpose="nav-records" data-link="records_home">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+<span class="text-[10px] mt-1 font-medium">Records</span>
+</button>
+<button class="flex flex-col items-center text-gray-400" data-purpose="nav-doctor" data-link="hospital_id_card">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" x2="19" y1="8" y2="14"></line><line x1="16" x2="22" y1="11" y2="11"></line></svg>
+<span class="text-[10px] mt-1 font-medium">Doctors</span>
+</button>
+<button class="flex flex-col items-center text-gray-400" data-purpose="nav-more" data-link="profile_home">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+<span class="text-[10px] mt-1 font-medium">More</span>
+</button>
+</div>
+</nav>
+<!-- END: BottomNavigationBar -->
+
+
+<script src="../wire.js"></script>
+</body></html>

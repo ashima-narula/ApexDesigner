@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MedFile — Demo Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'Hanken Grotesk', system-ui, sans-serif; }
+  .spine-step { counter-increment: spine; }
+  .spine-step::before {
+    content: counter(spine);
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.6rem; height: 1.6rem; border-radius: 999px;
+    background: #0058bc; color: #fff; font-weight: 700; font-size: 0.85rem;
+    margin-right: 0.6rem; flex-shrink: 0;
+  }
+  .spine-list { counter-reset: spine; }
+  .frame {
+    aspect-ratio: 9 / 19.5; background: #f3f3f3; border-radius: 1rem;
+    overflow: hidden; border: 1px solid #c1c6d7;
+  }
+  .frame img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+</style>
+</head>
+<body class="bg-[#f9f9f9] text-[#1b1b1b]">
+<header class="bg-[#0058bc] text-white px-6 py-10 md:py-14">
+  <div class="max-w-6xl mx-auto">
+    <p class="uppercase tracking-widest text-xs opacity-80 mb-3">MedFile · DECO3800 · Exhibit Demo</p>
+    <h1 class="text-3xl md:text-5xl font-black tracking-tight mb-3">Clickable Prototype</h1>
+    <p class="text-white/80 max-w-2xl text-base md:text-lg">
+      16 mobile screens wired together. Tap any tile below to enter the flow. Use the
+      <span class="font-semibold">← Demo Index</span> pill on every screen to return here.
+    </p>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 py-10 space-y-12">
+
+  <section class="bg-white border border-[#c1c6d7] rounded-2xl p-6 md:p-8 shadow-sm">
+    <div class="flex flex-wrap items-baseline justify-between gap-3 mb-5">
+      <h2 class="text-2xl font-bold">Demo spine — Prescription handoff</h2>
+      <span class="text-sm text-[#414755]">Recommended path for live demo</span>
+    </div>
+    <ol class="spine-list grid md:grid-cols-5 gap-3">
+      <li class="spine-step flex items-center bg-[#f3f3f3] rounded-xl p-4">
+        <a class="font-semibold text-[#0058bc] hover:underline" href="sign_in_sign_up/code.html">Sign in</a>
+      </li>
+      <li class="spine-step flex items-center bg-[#f3f3f3] rounded-xl p-4">
+        <a class="font-semibold text-[#0058bc] hover:underline" href="dashboard/code.html">Dashboard</a>
+      </li>
+      <li class="spine-step flex items-center bg-[#f3f3f3] rounded-xl p-4">
+        <a class="font-semibold text-[#0058bc] hover:underline" href="prescriptions_home/code.html">Prescriptions</a>
+      </li>
+      <li class="spine-step flex items-center bg-[#f3f3f3] rounded-xl p-4">
+        <a class="font-semibold text-[#0058bc] hover:underline" href="prescription_history/code.html">History</a>
+      </li>
+      <li class="spine-step flex items-center bg-[#f3f3f3] rounded-xl p-4">
+        <a class="font-semibold text-[#0058bc] hover:underline" href="add_medicine/code.html">Add medicine</a>
+      </li>
+    </ol>
+    <p class="text-sm text-[#414755] mt-4">
+      Want the new-user story? Start at <a class="text-[#0058bc] font-semibold hover:underline" href="onboarding/code.html">Onboarding</a>
+      — it lands on Sign in automatically.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-2xl font-bold mb-5">All screens</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5" id="screen-grid">
+      <!-- populated by JS -->
+    </div>
+  </section>
+
+  <section class="bg-[#eeeeee] rounded-2xl p-6 md:p-8">
+    <h2 class="text-xl font-bold mb-3">For the presenter</h2>
+    <ul class="list-disc pl-6 space-y-1 text-[#414755]">
+      <li>Open <code class="bg-white px-1.5 py-0.5 rounded text-[#0058bc]">index.html</code> in any modern browser — no server needed.</li>
+      <li>Every screen has a <strong>← Demo Index</strong> pill (top-left) to come back here.</li>
+      <li>Bottom-nav icons (Records / Home / Profile) work on every screen.</li>
+      <li>Cheatsheet for talking points: <a class="text-[#0058bc] font-semibold hover:underline" href="../CHEATSHEET.md">../CHEATSHEET.md</a></li>
+    </ul>
+  </section>
+</main>
+
+<script>
+  const SCREENS = [
+    ['onboarding', 'Onboarding', 'New-user carousel'],
+    ['sign_in_sign_up', 'Sign in / Sign up', 'Entry point'],
+    ['dashboard', 'Dashboard', 'Bento home'],
+    ['new_home_page', 'Home (alt)', 'Grid layout variant'],
+    ['records_home', 'Records', 'Category hub'],
+    ['clinical_records', 'Clinical records', 'Lab + consultations'],
+    ['medical_record_detail', 'Record detail', 'One record drilldown'],
+    ['immunisations', 'Immunisations', 'Vaccine log'],
+    ['health_notes', 'Health notes', 'Self-tracked notes'],
+    ['prescriptions_home', 'Prescriptions', 'Active scripts'],
+    ['prescription_history', 'Rx history', 'Past + refills'],
+    ['add_medicine', 'Add medicine', 'Manual entry flow'],
+    ['notifications', 'Notifications', 'Alert centre'],
+    ['profile_home', 'Profile', 'Account + settings'],
+    ['medical_id', 'Medical ID', 'Lockscreen card'],
+    ['hospital_id_card', 'Hospital ID', 'QR handoff card'],
+  ];
+  const grid = document.getElementById('screen-grid');
+  grid.innerHTML = SCREENS.map(([slug, title, sub]) => `
+    <a href="${slug}/code.html" class="group block">
+      <div class="frame group-hover:shadow-md transition-shadow">
+        <img src="${slug}/screen.png" alt="${title} mockup" loading="lazy" onerror="this.style.display='none'"/>
+      </div>
+      <p class="mt-2 font-semibold group-hover:text-[#0058bc] transition-colors">${title}</p>
+      <p class="text-sm text-[#414755]">${sub}</p>
+    </a>
+  `).join('');
+</script>
+</body>
+</html>

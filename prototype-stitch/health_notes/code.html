@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Health Record | Vital Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e8e8e8",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-surface-variant": "#414755",
+                        "tertiary": "#00647c",
+                        "primary-fixed-dim": "#adc6ff",
+                        "primary-container": "#0070eb",
+                        "background": "#f9f9f9",
+                        "surface-tint": "#005bc1",
+                        "outline": "#717786",
+                        "secondary-fixed": "#ffdad7",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f3f3f3",
+                        "on-secondary-container": "#fffbff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#001f28",
+                        "on-surface": "#1b1b1b",
+                        "tertiary-fixed": "#b6eaff",
+                        "secondary-container": "#dc3135",
+                        "primary-fixed": "#d8e2ff",
+                        "on-background": "#1b1b1b",
+                        "secondary": "#b81120",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "surface-dim": "#dadada",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#fefcff",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e2e2e2",
+                        "primary": "#0058bc",
+                        "on-tertiary-container": "#fafdff",
+                        "on-secondary-fixed-variant": "#930014",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "surface-container": "#eeeeee",
+                        "outline-variant": "#c1c6d7",
+                        "inverse-primary": "#adc6ff",
+                        "tertiary-container": "#007f9c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#410004",
+                        "tertiary-fixed-dim": "#49d6ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001a41",
+                        "inverse-surface": "#303030",
+                        "surface": "#f9f9f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-gutter": "16px",
+                        "stack-gap-sm": "8px",
+                        "container-padding": "24px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-lg": "32px",
+                        "grid-margin": "20px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; background-color: #f9f9f9; }
+        .glass-header { backdrop-filter: blur(12px); background-color: rgba(249, 249, 249, 0.85); }
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+        .fab-active { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .fab-active:active { transform: scale(0.9) rotate(5deg); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased pb-24">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 bg-surface border-b border-outline-variant w-full">
+<div class="flex justify-between items-center px-grid-margin py-stack-gap-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-stack-gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high border border-outline-variant">
+<img alt="John Smith" class="w-full h-full object-cover" data-alt="A professional and friendly portrait of a male healthcare user in his mid-30s. He has a warm expression, captured in a brightly lit, modern medical office setting. The lighting is soft and high-key, emphasizing a clean, clinical yet accessible atmosphere. The background is slightly blurred with hints of minimalist architecture and natural light, aligning with a corporate healthcare brand's visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_k3Zn2U1HvUT4RerczaJ7z2oK3S6RwieF5w8yhUO4fdNpWrZPIsRWEIrMPvaiO7saV26QjkLmSiPGh1GpwPzDPXRwgWZBQpeeiwwCjTZM2vkfzh6VogVWzc3EwyZXM4ogd6JedL-3mn9dHudnJBHv56sRJaOIOhEgzGbFVTJDY_diFkCK_1RYVdVNWxlOAYPUAn7_eq1otFY7_zwWehfmwSO6ZuHHJ-n3kn9w1XC44RLhpx9DxAZ0Ar_NP1jdFhSsRSr0YBh0kY4w"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-black text-primary">My Health Record</h1>
+</div>
+<div class="flex items-center gap-stack-gap-md">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors" data-icon="notifications">notifications</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-7xl mx-auto px-grid-margin mt-stack-gap-lg">
+<!-- Filter Bar -->
+<section class="mb-stack-gap-lg overflow-x-auto no-scrollbar py-2">
+<div class="flex items-center gap-stack-gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 rounded-full flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                    All Entries
+                </button>
+<div class="h-6 w-[1px] bg-outline-variant mx-1"></div>
+<button class="bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md text-label-md px-4 py-2 rounded-full hover:bg-surface-container-high transition-colors">Mood</button>
+<button class="bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md text-label-md px-4 py-2 rounded-full hover:bg-surface-container-high transition-colors">Symptom</button>
+<button class="bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md text-label-md px-4 py-2 rounded-full hover:bg-surface-container-high transition-colors">Exercise</button>
+<button class="bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md text-label-md px-4 py-2 rounded-full hover:bg-surface-container-high transition-colors">Medication</button>
+</div>
+</section>
+<!-- Bento Style Health Log -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-grid-gutter">
+<!-- Daily Insight Card (Pinned/Highlight) -->
+<div class="md:col-span-12 lg:col-span-4 bg-tertiary-container rounded-xl p-6 text-on-tertiary-container shadow-sm border border-outline-variant flex flex-col justify-between">
+<div>
+<h2 class="font-label-md text-label-md uppercase tracking-wider mb-2 opacity-80">Today's Summary</h2>
+<p class="font-headline-md text-headline-md leading-tight">3 entries recorded today. Your mood is higher than yesterday.</p>
+</div>
+<div class="mt-stack-gap-lg flex items-end justify-between">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-on-tertiary-container/20 flex items-center justify-center border-2 border-tertiary-container">
+<span class="material-symbols-outlined text-[16px]" data-icon="mood">mood</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-on-tertiary-container/20 flex items-center justify-center border-2 border-tertiary-container">
+<span class="material-symbols-outlined text-[16px]" data-icon="exercise">fitness_center</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm opacity-70">Last update: 2:15 PM</span>
+</div>
+</div>
+<!-- Main Timeline Entries -->
+<div class="md:col-span-12 lg:col-span-8 flex flex-col gap-stack-gap-md">
+<!-- Entry 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-gap-md hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="text-center">
+<span class="block font-label-sm text-label-sm text-outline uppercase">Oct</span>
+<span class="block font-headline-md text-headline-md text-primary leading-none">24</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Post-workout fatigue</span>
+<span class="font-label-sm text-label-sm text-outline">08:45 AM</span>
+</div>
+</div>
+<span class="bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm px-2 py-1 rounded-md">Symptom</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+                        Feeling slightly more exhausted than usual after the morning run. Muscles in lower back feel tight. Need to increase hydration and maybe scale back intensity tomorrow.
+                    </p>
+</article>
+<!-- Entry 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-gap-md hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="text-center">
+<span class="block font-label-sm text-label-sm text-outline uppercase">Oct</span>
+<span class="block font-headline-md text-headline-md text-primary leading-none">23</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Morning Mood Check</span>
+<span class="font-label-sm text-label-sm text-outline">07:30 AM</span>
+</div>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm px-2 py-1 rounded-md">Mood</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+                        Woke up feeling refreshed. Deep sleep score was 85. Mental clarity is high today, no brain fog reported. Ready for the quarterly review meeting.
+                    </p>
+</article>
+<!-- Entry 3 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-gap-md hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="text-center">
+<span class="block font-label-sm text-label-sm text-outline uppercase">Oct</span>
+<span class="block font-headline-md text-headline-md text-primary leading-none">22</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Strength Training</span>
+<span class="font-label-sm text-label-sm text-outline">06:15 PM</span>
+</div>
+</div>
+<span class="bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-2 py-1 rounded-md">Exercise</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+                        Completed 45 minutes of heavy lifting. Focused on deadlifts and squats. Form felt stable. Heart rate peaked at 165 bpm. Drank 2L of water post-session.
+                    </p>
+</article>
+<!-- Entry 4 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-gap-md hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="text-center">
+<span class="block font-label-sm text-label-sm text-outline uppercase">Oct</span>
+<span class="block font-headline-md text-headline-md text-primary leading-none">21</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Persistent Headache</span>
+<span class="font-label-sm text-label-sm text-outline">11:00 PM</span>
+</div>
+</div>
+<span class="bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm px-2 py-1 rounded-md">Symptom</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+                        Dull ache behind the eyes since mid-afternoon. Likely related to screen time. Took 400mg Ibuprofen at 9 PM. Feeling better but slightly drowsy.
+                    </p>
+</article>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed right-6 bottom-24 bg-primary text-on-primary w-14 h-14 rounded-full shadow-lg flex items-center justify-center z-50 fab-active hover:bg-surface-tint focus:outline-none focus:ring-4 focus:ring-primary-container">
+<span class="material-symbols-outlined text-[28px] font-bold" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-grid-margin bg-surface border-t border-outline-variant z-50">
+<!-- Records (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full p-2 w-12 h-12 transition-transform active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="folder" style="font-variation-settings: 'FILL' 1;">folder</span>
+</a>
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-12 h-12 transition-colors hover:text-primary active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-12 h-12 transition-colors hover:text-primary active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for tag filtering
+        document.querySelectorAll('button[class*="rounded-full"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.innerText.includes('filter_list')) return;
+                
+                // Toggle active styles (Visual only for prototype)
+                const isSelected = this.classList.contains('bg-primary-container');
+                
+                // Reset others (Simple logic for demo)
+                document.querySelectorAll('button[class*="rounded-full"]').forEach(b => {
+                    if (b.innerText.includes('filter_list')) return;
+                    b.classList.remove('bg-primary-container', 'text-on-primary-container');
+                    b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+                });
+
+                if (!isSelected) {
+                    this.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+                    this.classList.add('bg-primary-container', 'text-on-primary-container');
+                }
+            });
+        });
+
+        // FAB Animation interaction
+        const fab = document.querySelector('.fab-active');
+        fab.addEventListener('mousedown', () => {
+            fab.style.boxShadow = 'none';
+        });
+        fab.addEventListener('mouseup', () => {
+            fab.style.boxShadow = '';
+        });
+    </script>
+<script src="../wire.js"></script>
+</body></html>

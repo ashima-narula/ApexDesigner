@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile Home - My Health Record</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c1c6d7",
+                        "tertiary-fixed-dim": "#49d6ff",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1b1b1b",
+                        "on-surface": "#1b1b1b",
+                        "tertiary-container": "#007f9c",
+                        "surface-bright": "#f9f9f9",
+                        "on-primary-fixed-variant": "#004493",
+                        "primary-fixed-dim": "#adc6ff",
+                        "primary-container": "#0070eb",
+                        "secondary-container": "#dc3135",
+                        "on-secondary-fixed": "#410004",
+                        "secondary": "#b81120",
+                        "primary": "#0058bc",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dadada",
+                        "surface-tint": "#005bc1",
+                        "inverse-primary": "#adc6ff",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "surface-variant": "#e2e2e2",
+                        "inverse-surface": "#303030",
+                        "tertiary-fixed": "#b6eaff",
+                        "error": "#ba1a1a",
+                        "outline": "#717786",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-fixed": "#ffdad7",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "surface-container-low": "#f3f3f3",
+                        "on-secondary-fixed-variant": "#930014",
+                        "on-tertiary-fixed": "#001f28",
+                        "tertiary": "#00647c",
+                        "on-secondary-container": "#fffbff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-surface-variant": "#414755",
+                        "on-primary-container": "#fefcff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001a41",
+                        "on-tertiary-container": "#fafdff",
+                        "on-primary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "surface-container-high": "#e8e8e8",
+                        "surface": "#f9f9f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-gutter": "16px",
+                        "container-padding": "24px",
+                        "grid-margin": "20px",
+                        "stack-gap-lg": "32px",
+                        "stack-gap-sm": "8px",
+                        "stack-gap-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-40 border-b border-outline-variant w-full">
+<div class="flex justify-between items-center px-grid-margin py-stack-gap-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<img alt="John Smith profile picture" class="w-10 h-10 rounded-full border border-outline-variant" data-alt="A professional studio portrait of a middle-aged Caucasian man with a friendly, trustworthy expression, representing a healthcare professional or patient. He is wearing a clean, modern navy blue sweater against a soft, light-gray clinical background. The lighting is bright and even, reinforcing the modern, institutional trust of the corporate medical aesthetic. The overall mood is calm, reliable, and sterile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWMQNXbd4BTs2yz_jXt40oWGBdiNdFqUXiMUnLbT1ErBdskCIqlRjQg3Oko2_b5Mu6Y5Q-5yJ48Hi2Tjc9HPYO5fuWBwB-cevjk9aMFPS0O8vO2W6H2WR9WJMUKnAUp5cyrQa3LSnDTvcqY-H0pdSTciJ_GapOm06CJ3_yBM_0gXmURmk1pFPfhLDKUr_Iuz0-miqStMEEScZONSGGJDWju6xfS-ccYY8iXcpd20cn8f8AHvM6Yw5DjXxszoY_DjFGp4HtB1KhdCFh"/>
+<h1 class="font-headline-md text-headline-md font-black text-primary">My Health Record</h1>
+</div>
+<button class="text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-grid-margin pt-stack-gap-lg">
+<!-- Profile Hero Section -->
+<section class="flex flex-col items-center mb-stack-gap-lg">
+<div class="relative group">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-surface-container-high overflow-hidden mb-4 shadow-sm">
+<img alt="John Smith large profile avatar" class="w-full h-full object-cover" data-alt="A large, detailed close-up portrait of a professional man in his late 30s with short brown hair and a welcoming demeanor, set against a clean, white-toned medical office environment. The lighting is sharp yet flattering, emphasizing a modern corporate healthcare aesthetic. The palette is dominated by bright whites and professional blues, evoking a sense of clarity, efficiency, and institutional security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZAcf7oeM1gEplJc_GkxuLT0YdyE3PfSu63m5pzUrqwaF_TJpjbaxIAc24fHYXX7fFhbZX0ZUrjhK-9fA9o-8shT0uXw_bppzQO_rqDXmDPqjYmOgskaj9F_lrD38ueKYaITVj21KLUdNjqIYwrukRrIajHwVvvQuVzrs-JEj8bujQrIwnR5zN-g4Czqi_oZpN6vp4Y-LcXqfz_Kn5QnX78Ec3OY2tnRJhhqbmrbAc5J1Ii_pFdYZWvuUkx5RyXxPvomtVQV4lJPQQ"/>
+</div>
+<button class="absolute bottom-4 right-0 bg-primary text-on-primary p-2 rounded-full shadow-lg hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="text-center">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">John Smith</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Patient ID: #MR-882910-JS</p>
+<div class="mt-2 inline-flex items-center px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-label-sm font-label-sm">
+                    Verified Member
+                </div>
+</div>
+</section>
+<!-- Quick Stats Bento-lite -->
+<div class="grid grid-cols-2 gap-4 mb-stack-gap-lg">
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl flex items-center gap-3">
+<div class="bg-primary-container/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="bloodtype">bloodtype</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-outline">Blood Type</p>
+<p class="text-label-md font-label-md text-on-surface">O Positive</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl flex items-center gap-3">
+<div class="bg-secondary/10 p-2 rounded-lg text-secondary">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-outline">Allergies</p>
+<p class="text-label-md font-label-md text-on-surface">Penicillin</p>
+</div>
+</div>
+</div>
+<!-- Settings List -->
+<section class="space-y-stack-gap-sm">
+<h3 class="font-label-md text-label-md text-outline px-1 mb-2">ACCOUNT SETTINGS</h3>
+<nav class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden divide-y divide-outline-variant">
+<!-- Personal Info -->
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group active:bg-surface-variant" href="#">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">Personal Info</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</a>
+<!-- Hospital ID Card -->
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group active:bg-surface-variant" href="#">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">Hospital ID Card</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</a>
+<!-- Medicare Settings -->
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group active:bg-surface-variant" href="#">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">Medicare Settings</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</a>
+<!-- Health Notes -->
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group active:bg-surface-variant" href="#">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="sticky_note_2">sticky_note_2</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">Health Notes</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</a>
+</nav>
+<h3 class="font-label-md text-label-md text-outline px-1 mt-6 mb-2">SYSTEM</h3>
+<nav class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden divide-y divide-outline-variant">
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group active:bg-surface-variant" href="#">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">Security &amp; Privacy</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</a>
+<button class="w-full flex items-center justify-between p-4 hover:bg-error-container/10 transition-colors group active:bg-error-container/20">
+<div class="flex items-center gap-4">
+<div class="text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</div>
+<span class="font-body-lg text-body-lg text-secondary">Sign Out</span>
+</div>
+</button>
+</nav>
+</section>
+<!-- Legal Links -->
+<footer class="mt-stack-gap-lg text-center pb-12">
+<p class="font-label-sm text-label-sm text-outline">App Version 2.4.1 (Stable)</p>
+<div class="flex justify-center gap-4 mt-2">
+<a class="font-label-sm text-label-sm text-primary underline" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-primary underline" href="#">Terms of Service</a>
+</div>
+</footer>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-grid-margin bg-surface border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors p-2 w-12 h-12" href="#">
+<span class="material-symbols-outlined" data-icon="folder">folder</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors p-2 w-12 h-12" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full p-2 w-12 h-12 scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for list items
+        document.querySelectorAll('nav a').forEach(item => {
+            item.addEventListener('click', (e) => {
+                // Prevents jumping if using dummy hrefs
+                if(item.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+<script src="../wire.js"></script>
+</body></html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vital Ledger - Sign In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Hanken+Grotesk', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .auth-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#fafdff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface-container-highest": "#e2e2e2",
+                        "inverse-primary": "#adc6ff",
+                        "outline-variant": "#c1c6d7",
+                        "secondary": "#b81120",
+                        "on-secondary-fixed-variant": "#930014",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#49d6ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1b1b1b",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1b1b",
+                        "on-surface-variant": "#414755",
+                        "surface-bright": "#f9f9f9",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-container": "#fefcff",
+                        "background": "#f9f9f9",
+                        "surface-dim": "#dadada",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#00647c",
+                        "secondary-container": "#dc3135",
+                        "on-tertiary-fixed": "#001f28",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#b6eaff",
+                        "outline": "#717786",
+                        "on-primary-fixed": "#001a41",
+                        "secondary-fixed": "#ffdad7",
+                        "on-secondary-container": "#fffbff",
+                        "inverse-surface": "#303030",
+                        "surface-container": "#eeeeee",
+                        "surface-variant": "#e2e2e2",
+                        "primary": "#0058bc",
+                        "on-secondary-fixed": "#410004",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#007f9c",
+                        "surface-tint": "#005bc1",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "primary-container": "#0070eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-gap-sm": "8px",
+                        "grid-gutter": "16px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-lg": "32px",
+                        "grid-margin": "20px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen flex items-center justify-center p-grid-margin">
+<div class="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-12 gap-stack-gap-lg items-center">
+<!-- Brand Narrative Side (Desktop Only) -->
+<div class="hidden md:flex md:col-span-6 lg:col-span-7 flex-col justify-center space-y-stack-gap-md pr-12">
+<div class="flex items-center gap-2 mb-stack-gap-md">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+<span class="font-headline-lg text-headline-lg text-primary tracking-tight">Vital Ledger</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface max-w-md">Your health data, securely managed.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm">Access your medical history, test results, and wellness metrics in one professional, unified dashboard.</p>
+<div class="relative mt-stack-gap-lg w-full h-[300px] rounded-xl overflow-hidden border border-outline-variant">
+<img alt="Medical Dashboard Preview" class="w-full h-full object-cover grayscale-[20%] opacity-90" data-alt="A clean and professional medical dashboard displayed on a modern tablet held by a doctor in a bright, sunlit clinic. The UI features organized medical charts, patient records, and secure data indicators using a primary blue and white color palette. The atmosphere is clinical, efficient, and trustworthy, with soft bokeh highlighting the device." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFVzVw1-UBY67MvGqNQOJCIGiiAcDF2AK1b3Se1p_BfZYa27FaGUIxpdslm3LCSZhBxZCmMAek-MvVJHwoCuvaLRD0nMSZS3M25E3u9EfYFzGVVq0uF7BrWyDM2440EF-RZf7quK0_9exYKHvDwGoa6XmESFe_eY5GeO5syHdWx-YyvB2MkZ7LjjJUWfhlrbu9qLfVnbwHf5QypHm0iypB6-pSc3EQdEGiljLDyJd0THgyaegX8uhyTFNU-Et2oteVjM1W1dN9mhCS"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+</div>
+</div>
+<!-- Authentication Form Side -->
+<div class="col-span-1 md:col-span-6 lg:col-span-5 w-full">
+<div class="bg-surface-container-lowest auth-card rounded-xl border border-outline-variant p-container-padding space-y-stack-gap-md">
+<!-- Mobile Logo (Visible only on mobile) -->
+<div class="md:hidden flex flex-col items-center mb-stack-gap-lg">
+<span class="material-symbols-outlined text-primary text-5xl mb-2" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+<span class="font-headline-md text-headline-md-mobile text-primary font-black">Vital Ledger</span>
+</div>
+<!-- Header Content -->
+<div class="space-y-1">
+<h2 class="font-headline-md text-headline-md text-on-surface" id="form-title">Welcome Back</h2>
+<p class="font-body-md text-body-md text-on-surface-variant" id="form-subtitle">Securely sign in to your health record.</p>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-stack-gap-sm">
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5BWlVqAqVJk-kAVtJ9YjI4n7Ktf7-HywPUgBDlSXXZ-yUNQKzIxGsxg0LV6KNDgoIrpMC9Xgw4LTKEtHGRw2gZEDfLr8UBCGUJ8Za2Nzasvh1O8PM47mT_W3xpevNwTko_KuSYuQ4vGersOWiJvpsqrOKiDuNPmdZl3FnaoDzOVRb12ugTjAPOYsNwaOOhtCrsRwqlRZeIBd9XTwVBv27ahMZ2tIodELQm22xQTvNy4D5eeTo2c_eECVQb2u46TdYC6E3Lif5CTjy"/>
+                        Google
+                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">ios</span>
+                        Apple
+                    </button>
+</div>
+<div class="flex items-center gap-4 py-2">
+<div class="h-px bg-outline-variant flex-1"></div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">or email</span>
+<div class="h-px bg-outline-variant flex-1"></div>
+</div>
+<!-- Main Form -->
+<form class="space-y-stack-gap-md" id="auth-form" onsubmit="event.preventDefault();">
+<!-- Name Field (Hidden for Sign In) -->
+<div class="hidden transition-all duration-300" id="name-field-container">
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="name">Full Name</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-surface-bright border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-body-md text-body-md" id="name" placeholder="John Doe" type="text"/>
+</div>
+</div>
+<div class="space-y-stack-gap-sm">
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="email">Email Address</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-surface-bright border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-body-md text-body-md" id="email" placeholder="name@example.com" type="email"/>
+</div>
+</div>
+<div class="space-y-stack-gap-sm">
+<div class="flex justify-between items-center">
+<label class="block font-label-md text-label-md text-on-surface" for="password">Password</label>
+<a class="font-label-md text-label-md text-primary hover:underline transition-all" href="#" id="forgot-password">Forgot?</a>
+</div>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-surface-bright border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-body-md text-body-md" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline-variant hover:text-on-surface-variant transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-lg hover:bg-primary-container hover:shadow-lg transition-all active:scale-[0.98] duration-150" id="submit-button" type="button" data-link="dashboard">
+                        Sign In
+                    </button>
+</form>
+<!-- Toggle Action -->
+<div class="text-center pt-2">
+<p class="font-body-md text-body-md text-on-surface-variant">
+<span id="toggle-text">New to Vital Ledger?</span>
+<button class="text-primary font-label-md text-label-md hover:underline ml-1" id="toggle-auth">Create Account</button>
+</p>
+</div>
+</div>
+<!-- Footer Compliance -->
+<p class="mt-stack-gap-lg text-center font-label-sm text-label-sm text-outline px-container-padding">
+                By continuing, you agree to Vital Ledger's 
+                <a class="underline hover:text-on-surface-variant" href="#">Terms of Service</a> 
+                and 
+                <a class="underline hover:text-on-surface-variant" href="#">Privacy Policy</a>.
+            </p>
+</div>
+</div>
+<script>
+        const toggleBtn = document.getElementById('toggle-auth');
+        const formTitle = document.getElementById('form-title');
+        const formSubtitle = document.getElementById('form-subtitle');
+        const submitBtn = document.getElementById('submit-button');
+        const toggleText = document.getElementById('toggle-text');
+        const nameField = document.getElementById('name-field-container');
+        const forgotLink = document.getElementById('forgot-password');
+
+        let isSignIn = true;
+
+        toggleBtn.addEventListener('click', () => {
+            isSignIn = !isSignIn;
+            
+            if (!isSignIn) {
+                formTitle.textContent = "Create Account";
+                formSubtitle.textContent = "Start your clinical journey today.";
+                submitBtn.textContent = "Sign Up";
+                toggleText.textContent = "Already have an account?";
+                toggleBtn.textContent = "Sign In";
+                nameField.classList.remove('hidden');
+                forgotLink.classList.add('invisible');
+            } else {
+                formTitle.textContent = "Welcome Back";
+                formSubtitle.textContent = "Securely sign in to your health record.";
+                submitBtn.textContent = "Sign In";
+                toggleText.textContent = "New to Vital Ledger?";
+                toggleBtn.textContent = "Create Account";
+                nameField.classList.add('hidden');
+                forgotLink.classList.remove('invisible');
+            }
+        });
+
+        // Simple button interaction
+        submitBtn.addEventListener('mousedown', () => submitBtn.classList.add('scale-95'));
+        submitBtn.addEventListener('mouseup', () => submitBtn.classList.remove('scale-95'));
+        submitBtn.addEventListener('mouseleave', () => submitBtn.classList.remove('scale-95'));
+    </script>
+<script src="../wire.js"></script>
+</body></html>

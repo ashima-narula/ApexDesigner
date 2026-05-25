@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prescriptions - Vital Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom scrollbar for a cleaner medical look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e2e2e2;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c1c6d7",
+                        "tertiary-fixed-dim": "#49d6ff",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1b1b1b",
+                        "on-surface": "#1b1b1b",
+                        "tertiary-container": "#007f9c",
+                        "surface-bright": "#f9f9f9",
+                        "on-primary-fixed-variant": "#004493",
+                        "primary-fixed-dim": "#adc6ff",
+                        "primary-container": "#0070eb",
+                        "secondary-container": "#dc3135",
+                        "on-secondary-fixed": "#410004",
+                        "secondary": "#b81120",
+                        "primary": "#0058bc",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dadada",
+                        "surface-tint": "#005bc1",
+                        "inverse-primary": "#adc6ff",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "surface-variant": "#e2e2e2",
+                        "inverse-surface": "#303030",
+                        "tertiary-fixed": "#b6eaff",
+                        "error": "#ba1a1a",
+                        "outline": "#717786",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-fixed": "#ffdad7",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "surface-container-low": "#f3f3f3",
+                        "on-secondary-fixed-variant": "#930014",
+                        "on-tertiary-fixed": "#001f28",
+                        "tertiary": "#00647c",
+                        "on-secondary-container": "#fffbff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-surface-variant": "#414755",
+                        "on-primary-container": "#fefcff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001a41",
+                        "on-tertiary-container": "#fafdff",
+                        "on-primary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "surface-container-high": "#e8e8e8",
+                        "surface": "#f9f9f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-gutter": "16px",
+                        "container-padding": "24px",
+                        "grid-margin": "20px",
+                        "stack-gap-lg": "32px",
+                        "stack-gap-sm": "8px",
+                        "stack-gap-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant sticky top-0 z-40">
+<div class="flex justify-between items-center px-grid-margin py-stack-gap-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border border-outline-variant">
+<img alt="John Smith profile picture" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a clean-cut middle-aged male doctor with a warm, empathetic expression. He is wearing a white clinical coat over a light blue shirt. The background is a brightly lit, sterile medical environment with soft bokeh effects. The lighting is high-key and modern, reflecting a sense of institutional trust and clinical clarity consistent with high-end healthcare branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9iAa8hLoMmWKhQxPXkpVIDf9Z4CVlGqwqy2v4fQEL7gYHmaAp9rV7GMFdNKR9_lHKzEfyB9VpQHiA4H70wdlcU5mM_vzpwg4AR1dVdJLLIll3Zn-XjVs0H-yhDAUYuGJ18VE_Es6F_rrzC6tkbWW4wqzeHxLHUEIbFZyhu6Uve4fEfGCxGiWTxZw4EgUMkpDEnudE3Pz9GhrcydIYSlZ3JMc5lRf6iRScP3wvLcj3xP43ljR8_ozHUQ_s7QVabxIbFGS94G2DKK0x"/>
+</div>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md font-black text-primary">My Health Record</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors active:scale-95" data-icon="notifications">notifications</button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-grid-margin py-stack-gap-lg">
+<!-- Welcome & Summary Section -->
+<section class="mb-stack-gap-lg">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-2">Prescriptions</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">You have 3 active medications and 1 refill due soon.</p>
+</section>
+<!-- Bento Grid for Medications & Actions -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-grid-gutter">
+<!-- Add Medication Card (High Emphasis) -->
+<div class="md:col-span-4 bg-primary text-on-primary p-6 rounded-xl flex flex-col justify-between min-h-[200px] shadow-sm hover:brightness-110 transition-all cursor-pointer group">
+<div>
+<span class="material-symbols-outlined text-[48px] mb-4 group-hover:scale-110 transition-transform inline-block" data-icon="add_circle">add_circle</span>
+<h3 class="font-headline-md text-headline-md">Add Medicine</h3>
+<p class="font-label-md text-label-md opacity-90 mt-1">Register a new Rx or scan your dispenser.</p>
+</div>
+<div class="flex justify-end">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Urgent Alert Card -->
+<div class="md:col-span-8 bg-secondary-container text-on-secondary-container p-6 rounded-xl border border-secondary flex items-start gap-4">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant" data-icon="warning">warning</span>
+<div>
+<h3 class="font-label-md text-label-md uppercase tracking-wider mb-1">Low Stock Alert</h3>
+<p class="font-body-lg text-body-lg font-bold">Atorvastatin (Lipitor) 20mg</p>
+<p class="font-body-md text-body-md mt-1">Only 3 tablets remaining. A refill request has been sent to Mercy Pharmacy.</p>
+<button class="mt-4 bg-on-secondary-fixed-variant text-white px-6 py-2 rounded-full font-label-md text-label-md hover:bg-secondary transition-colors" data-link="prescription_history">Check Status</button>
+</div>
+</div>
+<!-- Medication List Header -->
+<div class="col-span-full mt-stack-gap-md flex items-center justify-between">
+<h4 class="font-label-md text-label-md text-outline uppercase tracking-widest">Active Medications</h4>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+                    View History <span class="material-symbols-outlined text-[16px]" data-icon="history">history</span>
+</button>
+</div>
+<!-- Medication Card 1 -->
+<div class="md:col-span-6 bg-white border border-outline-variant p-6 rounded-xl flex flex-col gap-stack-gap-md">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]" data-icon="pill">pill</span>
+</div>
+<div>
+<h3 class="font-headline-md text-[20px] text-on-surface">Lisinopril</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">10mg Tablet</p>
+</div>
+</div>
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-sm text-label-sm">Active</span>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-surface-container">
+<div>
+<p class="font-label-sm text-label-sm text-outline mb-1">Frequency</p>
+<p class="font-body-md text-body-md font-bold">Once Daily (Morning)</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline mb-1">Last Taken</p>
+<p class="font-body-md text-body-md font-bold">Today, 08:15 AM</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined text-[20px]" data-icon="alarm">alarm</span>
+<span class="font-label-md text-label-md">Next: Tomorrow 08:00 AM</span>
+</div>
+<button class="text-primary hover:bg-primary-fixed p-2 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Medication Card 2 -->
+<div class="md:col-span-6 bg-white border border-outline-variant p-6 rounded-xl flex flex-col gap-stack-gap-md">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]" data-icon="pill">pill</span>
+</div>
+<div>
+<h3 class="font-headline-md text-[20px] text-on-surface">Metformin</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">500mg ER Tablet</p>
+</div>
+</div>
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-sm text-label-sm">Active</span>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-surface-container">
+<div>
+<p class="font-label-sm text-label-sm text-outline mb-1">Frequency</p>
+<p class="font-body-md text-body-md font-bold">Twice Daily (W/ Meal)</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline mb-1">Stock</p>
+<p class="font-body-md text-body-md font-bold">42 Tablets Left</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined text-[20px]" data-icon="alarm">alarm</span>
+<span class="font-label-md text-label-md">Next: Today 07:00 PM</span>
+</div>
+<button class="text-primary hover:bg-primary-fixed p-2 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Dispenser Status Card (Visual Graphic) -->
+<div class="col-span-full bg-white border border-outline-variant p-8 rounded-xl mt-4">
+<div class="flex flex-col md:flex-row items-center gap-12">
+<div class="relative w-48 h-48">
+<!-- Simulated SVG Gauge for stock level -->
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552.92" stroke-dashoffset="138.23" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg text-display-lg text-primary">75%</span>
+<span class="font-label-md text-label-md text-outline">Total Inventory</span>
+</div>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h3 class="font-headline-md text-headline-md mb-2">Smart Dispenser Connected</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Your VitalLedger Hub is synced. 4 compartments are currently filled and monitored for adherence.</p>
+<div class="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">
+<div class="px-4 py-2 bg-surface-container rounded-lg flex items-center gap-2">
+<span class="w-3 h-3 bg-green-500 rounded-full"></span>
+<span class="font-label-md text-label-md">Hub Online</span>
+</div>
+<div class="px-4 py-2 bg-surface-container rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="battery_charging_full">battery_charging_full</span>
+<span class="font-label-md text-label-md">92%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB for mobile - Add Medicine -->
+<button class="md:hidden fixed bottom-24 right-6 w-16 h-16 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center z-50 active:scale-90 transition-transform" data-link="add_medicine">
+<span class="material-symbols-outlined text-[32px]" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-grid-margin bg-surface border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-12 h-12 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full p-2 w-12 h-12 scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="folder" style="font-variation-settings: 'FILL' 1;">folder</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-12 h-12 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.md\\:col-span-6').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.05)';
+                card.style.transition = 'all 0.2s ease-out';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = 'none';
+            });
+        });
+    </script>
+<script src="../wire.js"></script>
+</body></html>

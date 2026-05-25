@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Medical Record Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f9f9f9",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-tint": "#005bc1",
+                        "primary-container": "#0070eb",
+                        "on-primary-fixed": "#001a41",
+                        "on-surface-variant": "#414755",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#b6eaff",
+                        "secondary-container": "#dc3135",
+                        "secondary-fixed": "#ffdad7",
+                        "on-secondary-container": "#fffbff",
+                        "outline-variant": "#c1c6d7",
+                        "on-tertiary-container": "#fafdff",
+                        "on-secondary-fixed": "#410004",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#007f9c",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "on-primary-container": "#fefcff",
+                        "primary": "#0058bc",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f3f3f3",
+                        "surface": "#f9f9f9",
+                        "secondary": "#b81120",
+                        "inverse-primary": "#adc6ff",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed-variant": "#930014",
+                        "outline": "#717786",
+                        "on-surface": "#1b1b1b",
+                        "tertiary": "#00647c",
+                        "inverse-surface": "#303030",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed": "#001f28",
+                        "surface-variant": "#e2e2e2",
+                        "surface-dim": "#dadada",
+                        "on-background": "#1b1b1b",
+                        "background": "#f9f9f9",
+                        "tertiary-fixed-dim": "#49d6ff",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#adc6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-gutter": "16px",
+                        "stack-gap-lg": "32px",
+                        "stack-gap-sm": "8px",
+                        "grid-margin": "20px",
+                        "stack-gap-md": "16px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-bright text-on-surface antialiased min-h-screen flex flex-col">
+<!-- Top AppBar (JSON Mapping) -->
+<header class="bg-surface dark:bg-background border-b border-outline-variant dark:border-outline docked full-width top-0 z-50 sticky">
+<div class="flex justify-between items-center px-grid-margin py-stack-gap-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-stack-gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="John Smith profile picture" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP6BvyQ21NM6mAdzZPeqjzVm8pplXT3VlxuBLAGqIQjkz4SG7r8my6ipPn-c1JEergpMe4oDcxrMWdsFHE9O-GVUYyMWEjXGHjU3zdp-IGq8nZgjbm4lR__eb9gUYjgK4n9K9gB651NAVDCAau88ZBrnENtEkAi1Sa8whEsoQho6KURvMces333IGrflMlPCMbAd6r70wa9nW7gVVF7_V3U91D4Lirxz2MVfK3hxhpVKiKqaxyNfUZuT99_429HEOVR3q-KGFTVufx"/>
+</div>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md font-black text-primary dark:text-primary-fixed-dim">My Health Record</h1>
+</div>
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim p-2 rounded-full hover:bg-surface-container-low transition-colors" data-icon="notifications">
+                notifications
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-grid-margin py-stack-gap-lg pb-32">
+<!-- Record Detail Section -->
+<section class="max-w-2xl mx-auto bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<!-- Header Identity -->
+<div class="p-container-padding border-b border-outline-variant bg-surface-container-low">
+<div class="flex justify-between items-start mb-stack-gap-sm">
+<span class="font-label-md text-label-md bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full uppercase tracking-wider">Inpatient Record</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ID: 8842-XN-2024</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">Medical Record</h2>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-body-md text-body-md">01 January 2024</span>
+</div>
+</div>
+<!-- Primary Injury Stats -->
+<div class="p-container-padding space-y-stack-gap-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-gap-lg">
+<div class="space-y-1">
+<p class="font-label-md text-label-md text-primary uppercase">Injury</p>
+<p class="font-headline-md text-headline-md text-on-surface">Fracture on arm</p>
+</div>
+<div class="space-y-1">
+<p class="font-label-md text-label-md text-primary uppercase">Day of Accident</p>
+<p class="font-body-lg text-body-lg text-on-surface">01 January 1990</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-gap-lg border-t border-outline-variant pt-stack-gap-md">
+<div class="space-y-1">
+<p class="font-label-md text-label-md text-primary uppercase">Cause</p>
+<p class="font-body-md text-body-md text-on-surface">Car crash</p>
+</div>
+<div class="space-y-1">
+<p class="font-label-md text-label-md text-primary uppercase">Hospital</p>
+<p class="font-body-md text-body-md text-on-surface">Royal Brisbane and Women's Hospital</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-gap-lg border-t border-outline-variant pt-stack-gap-md">
+<div class="space-y-1">
+<p class="font-label-md text-label-md text-primary uppercase">Doctor</p>
+<p class="font-body-md text-body-md text-on-surface">Dr Jenni Yan</p>
+</div>
+<div class="space-y-1">
+<p class="font-label-md text-label-md text-primary uppercase">Examinations</p>
+<ul class="list-disc list-inside font-body-md text-body-md text-on-surface">
+<li>Blood test</li>
+<li>X-ray</li>
+</ul>
+</div>
+</div>
+<!-- Diagnostic Summary -->
+<div class="bg-surface-container-low p-stack-gap-md rounded-lg border border-outline-variant">
+<p class="font-label-md text-label-md text-primary uppercase mb-2">Doctor diagnostic</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                        Fracture on forearm, Wound on left eyebrow. Small scratches around face and arms. Patient stabilized upon arrival. Cast applied to left arm. Recovery estimated 6-8 weeks with physical therapy.
+                    </p>
+</div>
+<!-- Prescription Section -->
+<div class="pt-stack-gap-md border-t border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-gap-md">Prescription</h3>
+<div class="space-y-stack-gap-sm">
+<div class="flex justify-between items-center p-3 border border-outline-variant rounded-lg">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Diclofenac 100mg</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Oral • 2 times per day</p>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="medication">medication</span>
+</div>
+<div class="flex justify-between items-center p-3 border border-outline-variant rounded-lg">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Amoxicillin 250mg</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Oral • Every 8 hours</p>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="medication">medication</span>
+</div>
+</div>
+</div>
+<!-- Files Section (PDF Links) -->
+<div class="pt-stack-gap-md border-t border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-gap-sm">Files</h3>
+<div class="grid grid-cols-1 gap-2">
+<a class="flex items-center gap-3 p-3 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors group" href="#" data-link="clinical_records">
+<span class="material-symbols-outlined text-primary" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span class="flex-1 font-body-md text-body-md text-primary group-hover:underline">X_RAY_JOHN_SMITH.PDF</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="download">download</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors group" href="#" data-link="clinical_records">
+<span class="material-symbols-outlined text-primary" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span class="flex-1 font-body-md text-body-md text-primary group-hover:underline">Generalexam_RBWH_02092024.PDF</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="download">download</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors group" href="#" data-link="clinical_records">
+<span class="material-symbols-outlined text-primary" data-icon="receipt_long">receipt_long</span>
+<span class="flex-1 font-body-md text-body-md text-primary group-hover:underline">Medical_bill.pdf</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="download">download</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Floating Decorative Element (Atmospheric) -->
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[800px] h-[800px] opacity-10 pointer-events-none">
+<div class="w-full h-full bg-gradient-to-tr from-primary to-tertiary-container rounded-full blur-[120px]"></div>
+</div>
+</main>
+<!-- BottomNavBar (JSON Mapping) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-grid-margin bg-surface dark:bg-background border-t border-outline-variant dark:border-outline z-50">
+<!-- Active Node: Records (folder) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-on-primary-fixed-variant text-on-primary-container dark:text-primary-fixed rounded-full p-2 w-12 h-12 scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="folder" data-weight="fill" style="font-variation-settings: 'FILL' 1;">folder</span>
+<span class="sr-only">Records</span>
+</a>
+<!-- Inactive Node: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-2 w-12 h-12 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="sr-only">Home</span>
+</a>
+<!-- Inactive Node: Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-2 w-12 h-12 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="sr-only">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('mousedown', () => {
+                elem.classList.add('scale-95');
+            });
+            elem.addEventListener('mouseup', () => {
+                elem.classList.remove('scale-95');
+            });
+            elem.addEventListener('mouseleave', () => {
+                elem.classList.remove('scale-95');
+            });
+        });
+
+        // Simple Fade-in effect for the record card
+        window.addEventListener('DOMContentLoaded', () => {
+            const card = document.querySelector('section');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+<script src="../wire.js"></script>
+</body></html>
